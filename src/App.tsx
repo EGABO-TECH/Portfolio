@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { ArrowUpRight, Download, Eye } from 'lucide-react';
 import FluidBackground from './components/FluidBackground';
 import SkillsGrid from './components/SkillsGrid';
+import egaboPhoto from './assets/EGABO-AARON.jpeg';
 
 // Reusable BlurText Component
 const BlurText = ({ text, className }: { text: string; className?: string }) => {
@@ -150,7 +151,7 @@ function App() {
             className="w-full md:w-1/3 relative"
           >
             <div className="aspect-[4/5] rounded-[2rem] overflow-hidden liquid-glass-strong p-2">
-              <img src="/assets/EGABO-AARON.jpeg" alt="Egabo Aaron" className="w-full h-full object-cover rounded-[1.5rem] grayscale hover:grayscale-0 transition-all duration-700" />
+              <img src={egaboPhoto} alt="Egabo Aaron" className="w-full h-full object-cover rounded-[1.5rem] grayscale hover:grayscale-0 transition-all duration-700" />
             </div>
             <div className="absolute -bottom-6 -right-6 liquid-glass p-6 rounded-[1.5rem] w-48">
               <div className="text-3xl font-heading italic">RENOA</div>
