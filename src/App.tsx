@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowUpRight, Download, Eye } from 'lucide-react';
 import FluidBackground from './components/FluidBackground';

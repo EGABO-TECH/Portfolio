@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+// @ts-expect-error - no types available for fluid.js
 import webGLFluid from '../utils/fluid';
 
 const FluidBackground = () => {
