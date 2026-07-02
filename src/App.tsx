@@ -1,6 +1,8 @@
 import { useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowUpRight, Download, Eye } from 'lucide-react';
+import FluidBackground from './components/FluidBackground';
+import SkillsGrid from './components/SkillsGrid';
 
 // Reusable BlurText Component
 const BlurText = ({ text, className }: { text: string; className?: string }) => {
@@ -36,81 +38,6 @@ const AbstractBackground = () => (
     <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
   </div>
 );
-
-// RAF-based fading video — hero background only
-const FadingVideo = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const rAFRef = useRef<number | null>(null);
-  const fadingOutRef = useRef(false);
-
-  const fadeTo = (targetOpacity: number, durationMs = 500) => {
-    const video = videoRef.current;
-    if (!video) return;
-    const startOpacity = parseFloat(video.style.opacity) || 0;
-    const startTime = performance.now();
-    if (rAFRef.current) cancelAnimationFrame(rAFRef.current);
-    const animate = (time: number) => {
-      const elapsed = time - startTime;
-      const progress = Math.min(elapsed / durationMs, 1);
-      if (videoRef.current) {
-        videoRef.current.style.opacity = String(
-          startOpacity + (targetOpacity - startOpacity) * progress
-        );
-      }
-      if (progress < 1) rAFRef.current = requestAnimationFrame(animate);
-    };
-    rAFRef.current = requestAnimationFrame(animate);
-  };
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    const onLoadedData = () => {
-      video.style.opacity = '0';
-      video.play().catch(console.error);
-      fadeTo(1);
-    };
-    const onTimeUpdate = () => {
-      const timeLeft = video.duration - video.currentTime;
-      if (!fadingOutRef.current && timeLeft <= 0.55 && timeLeft > 0) {
-        fadingOutRef.current = true;
-        fadeTo(0);
-      }
-    };
-    const onEnded = () => {
-      video.style.opacity = '0';
-      setTimeout(() => {
-        if (!videoRef.current) return;
-        videoRef.current.currentTime = 0;
-        videoRef.current.play().catch(console.error);
-        fadingOutRef.current = false;
-        fadeTo(1);
-      }, 100);
-    };
-    video.addEventListener('loadeddata', onLoadedData);
-    video.addEventListener('timeupdate', onTimeUpdate);
-    video.addEventListener('ended', onEnded);
-    return () => {
-      if (rAFRef.current) cancelAnimationFrame(rAFRef.current);
-      video.removeEventListener('loadeddata', onLoadedData);
-      video.removeEventListener('timeupdate', onTimeUpdate);
-      video.removeEventListener('ended', onEnded);
-    };
-  }, []);
-
-  return (
-    <video
-      ref={videoRef}
-      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_115001_bcdaa3b4-03de-47e7-ad63-ae3e392c32d4.mp4"
-      className="absolute inset-0 w-full h-full object-cover translate-y-[17%]"
-      style={{ opacity: 0 }}
-      autoPlay
-      muted
-      playsInline
-      preload="auto"
-    />
-  );
-};
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -157,8 +84,8 @@ function App() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-screen bg-black flex flex-col items-center justify-center pt-24 px-4 text-center">
-        {/* Cinematic video background */}
-        <FadingVideo />
+        {/* Interactive Fluid background */}
+        <FluidBackground />
         {/* Gradient vignette so text stays legible over video */}
         <div className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-b from-black/60 via-black/20 to-black/70" />
         {/* Hero content */}
@@ -523,42 +450,8 @@ function App() {
         </div>
       </section>
 
-      {/* Skills & Stats Section */}
-      <section id="skills" className="relative z-10 py-32 px-8 md:px-16 lg:px-24">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="liquid-glass rounded-[1.5rem] p-8 flex flex-col justify-between col-span-1 md:col-span-2 lg:col-span-2">
-            <div>
-              <h3 className="text-2xl font-heading italic mb-2">Technical Mastery</h3>
-              <p className="text-sm text-white/60 mb-8 max-w-sm">Comfortable across frontend, backend, systems programming, and AI tooling.</p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {['TypeScript', 'JavaScript', 'Next.js', 'Node.js', 'C', 'Rust', 'PostgreSQL', 'Tailwind CSS'].map(skill => (
-                <span key={skill} className="bg-white/5 border border-white/10 px-4 py-2 rounded-full text-sm">{skill}</span>
-              ))}
-            </div>
-          </div>
-
-          <div className="liquid-glass rounded-[1.5rem] p-8 flex flex-col justify-between">
-            <svg className="w-8 h-8 text-blue-400 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-            </svg>
-            <div>
-              <div className="font-heading italic text-4xl mb-1">AI / ML</div>
-              <div className="text-sm text-white/60">Gemini 2.0, Claude, LangChain, OCR.space</div>
-            </div>
-          </div>
-
-          <div className="liquid-glass rounded-[1.5rem] p-8 flex flex-col justify-between">
-            <svg className="w-8 h-8 text-emerald-400 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-            <div>
-              <div className="font-heading italic text-4xl mb-1">Impact</div>
-              <div className="text-sm text-white/60">Offline-first, NCHE compliant, Localized</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Skills Section */}
+      <SkillsGrid />
 
       {/* Footer / Newsletter */}
       <section id="contact" className="relative z-10 py-24 px-8 md:px-16 lg:px-24 border-t border-white/10">
