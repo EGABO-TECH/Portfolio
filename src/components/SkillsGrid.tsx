@@ -119,12 +119,16 @@ const CustomIcon = ({ name, className }: { name: string, className?: string }) =
   }
 };
 
-const SkillCard = ({ skill, index, rowIndex }: { skill: any, index: number, rowIndex: number }) => {
-  const customNode = CustomIcon({ 
-    name: skill.name, 
-    className: "w-8 h-8 sm:w-10 sm:h-10 opacity-80 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]" 
-  });
+// Names that have a hand-crafted custom icon defined in CustomIcon
+const CUSTOM_ICON_NAMES = new Set([
+  'CSS', 'VS Code', 'CMD', 'Antigravity', 'Z.AI', 'Speechma',
+  'MS Office', 'MS Access', 'Powerpoint',
+]);
 
+const ICON_CLASS = 'w-8 h-8 sm:w-10 sm:h-10 opacity-80 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]';
+
+const SkillCard = ({ skill, index, rowIndex }: { skill: { name: string; icon: string }, index: number, rowIndex: number }) => {
+  const hasCustom = CUSTOM_ICON_NAMES.has(skill.name);
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -133,11 +137,13 @@ const SkillCard = ({ skill, index, rowIndex }: { skill: any, index: number, rowI
       transition={{ duration: 0.5, delay: rowIndex * 0.1 + index * 0.05 }}
       className="liquid-glass group rounded-2xl p-4 w-20 h-24 sm:w-24 sm:h-28 flex flex-col items-center justify-center gap-3 hover:bg-white/10 transition-all duration-300 hover:scale-110 hover:-translate-y-2 cursor-pointer border border-white/5 hover:border-white/20 shadow-lg"
     >
-      {customNode ? customNode : (
-        <img 
-          src={`https://cdn.simpleicons.org/${skill.icon}/white`} 
-          alt={skill.name} 
-          className="w-8 h-8 sm:w-10 sm:h-10 opacity-80 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]"
+      {hasCustom ? (
+        <CustomIcon name={skill.name} className={ICON_CLASS} />
+      ) : (
+        <img
+          src={`https://cdn.simpleicons.org/${skill.icon}/white`}
+          alt={skill.name}
+          className={ICON_CLASS}
           onError={(e) => {
             (e.target as HTMLImageElement).src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>';
           }}
