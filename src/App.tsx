@@ -1,22 +1,23 @@
 import { useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, GitFork, Star, Globe, BookOpen, User, Flame, Rocket } from 'lucide-react';
+import { fadeUp, fadeIn, slideInLeft, slideInRight, scaleIn, staggerContainer, staggerItem, liftUp, viewport } from './lib/motionVariants';
 
 import SkillsGrid from './components/SkillsGrid';
 import SocialFeeds from './components/SocialFeeds';
 import HeroSection from './components/HeroSection';
 import egaboPhoto from './assets/EGABO-AARON.jpeg';
 import eaLogo from './assets/ea-logo.png';
-import esmsImage from './assets/esms_dashboard.png';
-import medswiftImage from './assets/medswift_app.png';
-import accommodateMeImage from './assets/accommodate_me.png';
+import esmsImage from './assets/esms-real.png';
+import medswiftImage from './assets/medswift-real.png';
+import accommodateMeImage from './assets/accommodate-me-real.png';
 
 // Abstract Background
 const AbstractBackground = () => (
   <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-black to-black"></div>
-    <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-blue-600/10 blur-[120px] rounded-full"></div>
-    <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-purple-600/10 blur-[120px] rounded-full"></div>
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-[#020818] to-[#020818]"></div>
+    <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-emerald-600/8 blur-[120px] rounded-full"></div>
+    <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-amber-500/8 blur-[120px] rounded-full"></div>
     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
     {/* Grid */}
     <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
@@ -296,10 +297,10 @@ const REPOS: Repo[] = [
 ];
 
 const CATEGORY_CONFIG: Record<RepoCategory, { label: string; icon: React.ReactNode; color: string; accent: string }> = {
-  Popular: { label: 'Popular', icon: <Flame className="w-3.5 h-3.5" />, color: 'text-orange-400', accent: 'bg-orange-400/10 border-orange-400/20' },
-  Personal: { label: 'Personal', icon: <User className="w-3.5 h-3.5" />, color: 'text-blue-400', accent: 'bg-blue-400/10 border-blue-400/20' },
-  Study: { label: 'Study', icon: <BookOpen className="w-3.5 h-3.5" />, color: 'text-emerald-400', accent: 'bg-emerald-400/10 border-emerald-400/20' },
-  Fork: { label: 'Forks', icon: <GitFork className="w-3.5 h-3.5" />, color: 'text-purple-400', accent: 'bg-purple-400/10 border-purple-400/20' },
+  Popular: { label: 'Popular', icon: <Flame className="w-3.5 h-3.5" />, color: 'text-amber-400', accent: 'bg-amber-400/10 border-amber-400/20' },
+  Personal: { label: 'Personal', icon: <User className="w-3.5 h-3.5" />, color: 'text-emerald-400', accent: 'bg-emerald-400/10 border-emerald-400/20' },
+  Study: { label: 'Study', icon: <BookOpen className="w-3.5 h-3.5" />, color: 'text-teal-400', accent: 'bg-teal-400/10 border-teal-400/20' },
+  Fork: { label: 'Forks', icon: <GitFork className="w-3.5 h-3.5" />, color: 'text-lime-400', accent: 'bg-lime-400/10 border-lime-400/20' },
   'Not Started': { label: 'Not Started', icon: <Rocket className="w-3.5 h-3.5" />, color: 'text-white/40', accent: 'bg-white/5 border-white/10' },
 };
 
@@ -332,7 +333,7 @@ const GitHubSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <div className="text-sm font-body text-blue-400 mb-4">// GITHUB REPOSITORIES</div>
+          <div className="text-sm font-body text-gradient-emerald-gold font-semibold mb-4">// GITHUB REPOSITORIES</div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <h2 className="text-5xl md:text-6xl font-heading italic leading-tight tracking-[-2px]">
               Code in the Open
@@ -401,10 +402,10 @@ const GitHubSection = () => {
                   className="liquid-glass rounded-[1.5rem] p-6 flex flex-col group hover:bg-white/[0.03] transition-all duration-300 relative overflow-hidden"
                 >
                   {/* Subtle glow on hover */}
-                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[1.5rem] ${repo.category === 'Popular' ? 'bg-gradient-to-br from-orange-500/5 to-transparent' :
-                    repo.category === 'Personal' ? 'bg-gradient-to-br from-blue-500/5 to-transparent' :
-                      repo.category === 'Study' ? 'bg-gradient-to-br from-emerald-500/5 to-transparent' :
-                        repo.category === 'Fork' ? 'bg-gradient-to-br from-purple-500/5 to-transparent' :
+                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[1.5rem] ${repo.category === 'Popular' ? 'bg-gradient-to-br from-amber-500/5 to-transparent' :
+                    repo.category === 'Personal' ? 'bg-gradient-to-br from-emerald-500/5 to-transparent' :
+                      repo.category === 'Study' ? 'bg-gradient-to-br from-teal-500/5 to-transparent' :
+                        repo.category === 'Fork' ? 'bg-gradient-to-br from-lime-500/5 to-transparent' :
                           'bg-gradient-to-br from-white/3 to-transparent'
                     }`} />
 
@@ -500,165 +501,187 @@ const GitHubSection = () => {
 
 function App() {
   return (
-    <div className="relative w-full min-h-screen bg-black font-body text-white selection:bg-blue-500/30">
+    <div className="relative w-full min-h-screen bg-transparent font-body text-slate-200 selection:bg-emerald-500/30">
       <AbstractBackground />
 
       {/* â”€â”€ New Hero Section (includes its own self-contained navbar) â”€â”€ */}
       <HeroSection />
 
       {/* About Section */}
-      <section id="about" className="relative z-10 py-32 px-4 sm:px-8 md:px-16 lg:px-24">
+      <section id="about" className="relative z-10 py-32 px-4 sm:px-8 md:px-16 lg:px-24 overflow-hidden">
+        {/* Ambient floating orbs */}
+        <div className="absolute top-1/4 left-[5%] w-72 h-72 bg-emerald-600/8 rounded-full blur-[100px] pointer-events-none animate-float" />
+        <div className="absolute bottom-1/4 right-[5%] w-64 h-64 bg-amber-500/8 rounded-full blur-[90px] pointer-events-none animate-float-lg" />
+
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+          {/* Photo column */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
+            variants={slideInLeft} initial="hidden" whileInView="visible" viewport={viewport}
             className="w-full md:w-1/3 relative"
           >
             <div className="aspect-[4/5] rounded-[2rem] overflow-hidden liquid-glass-strong p-2">
-              <img src={egaboPhoto} alt="Egabo Aaron" className="w-full h-full object-cover rounded-[1.5rem]" />
+              <img src={egaboPhoto} alt="Egabo Aaron" className="w-full h-full object-cover rounded-[1.5rem] transition-transform duration-700 hover:scale-[1.03]" />
             </div>
-            <div className="absolute -bottom-4 -right-2 sm:-right-4 md:-bottom-8 md:-right-8 liquid-glass p-5 md:p-6 rounded-[1.5rem] min-w-[15rem] md:min-w-[17rem] shadow-2xl border border-white/10 backdrop-blur-md">
+            <motion.div
+              variants={scaleIn} initial="hidden" whileInView="visible" viewport={viewport}
+              transition={{ delay: 0.35 }}
+              className="absolute -bottom-4 -right-2 sm:-right-4 md:-bottom-8 md:-right-8 liquid-glass p-5 md:p-6 rounded-[1.5rem] min-w-[15rem] md:min-w-[17rem] shadow-2xl border border-white/10 backdrop-blur-md animate-glow-border"
+            >
               <div className="text-3xl font-heading italic tracking-wide">RENOA</div>
               <div className="text-xs text-white/80 mt-1.5 font-medium leading-relaxed">Co-Founder & Technical Project Manager</div>
-            </div>
+            </motion.div>
           </motion.div>
 
-          <div className="w-full md:w-2/3">
-            <div className="text-sm font-body text-blue-400 mb-4">// ABOUT ME</div>
-            <h2 className="text-4xl md:text-5xl font-heading italic leading-tight tracking-[-1px] mb-8">
+          {/* Text column */}
+          <motion.div
+            variants={staggerContainer()} initial="hidden" whileInView="visible" viewport={viewport}
+            className="w-full md:w-2/3"
+          >
+            <motion.div variants={staggerItem} className="text-sm font-body text-gradient-emerald-gold font-semibold mb-4">// ABOUT ME</motion.div>
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-heading italic leading-tight tracking-[-1px] mb-8">
               "Tech, Innovation and Curiosity all curated in my pragmatic mind."
-            </h2>
-            <div className="space-y-6 text-white/80 font-light text-lg leading-relaxed">
-              <p>
+            </motion.h2>
+            <motion.div variants={staggerContainer(0.12, 0.2)} initial="hidden" whileInView="visible" viewport={viewport} className="space-y-6 text-white/80 font-light text-lg leading-relaxed">
+              <motion.p variants={staggerItem}>
                 I spend most of my time learning and writing clean backend code whilst designing simple, clear layouts. I focus on building reliable software that stays up and running even when the internet or servers slow down.
-              </p>
-              <p>
+              </motion.p>
+              <motion.p variants={staggerItem}>
                 Beyond code, I am a passionate advocate for community development and solving community problems in compliance with the SDGs. My interests in philosophy, psychology, and history inform how I think about user needs and product design.
-              </p>
-            </div>
-          </div>
+              </motion.p>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="relative z-10 py-32 px-4 sm:px-8 md:px-16 lg:px-24 bg-black/50">
+      <section id="projects" className="relative z-10 py-32 px-4 sm:px-8 md:px-16 lg:px-24 bg-[#020818]/50 overflow-hidden">
+        {/* Ambient orbs */}
+        <div className="absolute top-0 right-[10%] w-96 h-96 bg-emerald-600/6 rounded-full blur-[140px] pointer-events-none animate-pulse-slow" />
+        <div className="absolute bottom-0 left-[5%] w-80 h-80 bg-amber-500/6 rounded-full blur-[120px] pointer-events-none animate-pulse-slow" style={{ animationDelay: '2s' }} />
+
         <div className="max-w-7xl mx-auto">
-          <div className="text-sm font-body text-blue-400 mb-4">// FLAGSHIP PROJECTS</div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading italic leading-tight tracking-[-2px] mb-16">
-            Engineering for Impact
-          </h2>
+          <motion.div variants={staggerContainer(0.1)} initial="hidden" whileInView="visible" viewport={viewport}>
+            <motion.div variants={staggerItem} className="text-sm font-body text-gradient-emerald-gold font-semibold mb-4">// FLAGSHIP PROJECTS</motion.div>
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl lg:text-6xl font-heading italic leading-tight tracking-[-2px] mb-16">
+              Engineering for Impact
+            </motion.h2>
+          </motion.div>
 
           <div className="space-y-24">
             {/* ESMS */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
+              variants={staggerContainer(0.15, 0)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewport}
               className="flex flex-col lg:flex-row gap-12 items-center"
             >
-              <div className="w-full lg:w-1/2 order-2 lg:order-1">
-                <div className="liquid-glass rounded-full inline-flex px-4 py-1.5 text-xs font-medium mb-6">EdTech â€¢ Enterprise System</div>
-                <h3 className="text-4xl font-heading italic mb-4">ESMS</h3>
-                <p className="text-white/70 font-light leading-relaxed mb-6">
+              <motion.div variants={slideInLeft} className="w-full lg:w-1/2 order-2 lg:order-1">
+                <motion.div variants={liftUp} className="liquid-glass rounded-full inline-flex px-4 py-1.5 text-xs font-medium mb-6">EdTech • Enterprise System</motion.div>
+                <motion.h3 variants={fadeUp} className="text-4xl font-heading italic mb-4">ESMS</motion.h3>
+                <motion.p variants={staggerItem} className="text-white/70 font-light leading-relaxed mb-6">
                   The definitive digital infrastructure for modern higher education in Uganda. A 4-layer decoupled architecture featuring multi-tenant RBAC, NCHE regulatory compliance, and native Ugandan Shilling financial workflows with local bank APIs (MTN MoMo, Airtel Money).
-                </p>
-                <div className="flex flex-wrap gap-2 mb-8">
+                </motion.p>
+                <motion.div variants={staggerContainer(0.07, 0.1)} initial="hidden" whileInView="visible" viewport={viewport} className="flex flex-wrap gap-2 mb-8">
                   {['TypeScript', 'Next.js 14', 'Supabase', 'TailwindCSS'].map(tech => (
-                    <span key={tech} className="liquid-glass px-3 py-1 rounded-full text-xs">{tech}</span>
+                    <motion.span key={tech} variants={staggerItem} className="liquid-glass px-3 py-1 rounded-full text-xs">{tech}</motion.span>
                   ))}
-                </div>
-                <a href="https://esms-beta.vercel.app" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium hover:text-blue-400 transition-colors">
+                </motion.div>
+                <motion.a variants={fadeIn} href="https://esms-beta.vercel.app" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium hover:text-emerald-400 transition-colors">
                   View Live Platform <ArrowUpRight className="w-4 h-4" />
-                </a>
-              </div>
-              <div className="w-full lg:w-1/2 order-1 lg:order-2">
-                <div className="aspect-[16/10] liquid-glass-strong rounded-[2rem] p-2 relative overflow-hidden group">
-                  <img src={esmsImage} alt="ESMS Dashboard" className="w-full h-full object-cover rounded-[1.5rem] transition-all duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[1.5rem]"></div>
-                </div>
-              </div>
+                </motion.a>
+              </motion.div>
+              <motion.div variants={slideInRight} className="w-full lg:w-1/2 order-1 lg:order-2">
+                <motion.div variants={scaleIn} className="aspect-[16/10] liquid-glass-strong rounded-[2rem] p-2 relative overflow-hidden group">
+                  <img src={esmsImage} alt="ESMS Dashboard" className="w-full h-full object-contain bg-black rounded-[1.5rem] transition-all duration-700 group-hover:scale-[1.02] p-4" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[1.5rem]"></div>
+                  <div className="absolute inset-0 animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[1.5rem]" />
+                </motion.div>
+              </motion.div>
             </motion.div>
 
             {/* MedSwift */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
+              variants={staggerContainer(0.15, 0)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewport}
               className="flex flex-col lg:flex-row gap-12 items-center"
             >
-              <div className="w-full lg:w-1/2">
-                <div className="aspect-[16/10] liquid-glass-strong rounded-[2rem] p-2 relative overflow-hidden group">
-                  <img src={medswiftImage} alt="MedSwift App" className="w-full h-full object-cover rounded-[1.5rem] transition-all duration-700" />
+              <motion.div variants={slideInLeft} className="w-full lg:w-1/2">
+                <motion.div variants={scaleIn} className="aspect-[16/10] liquid-glass-strong rounded-[2rem] p-2 relative overflow-hidden group">
+                  <img src={medswiftImage} alt="MedSwift App" className="w-full h-full object-contain bg-white rounded-[1.5rem] transition-all duration-700 group-hover:scale-[1.02] p-4" />
                   <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[1.5rem]"></div>
-                </div>
-              </div>
-              <div className="w-full lg:w-1/2">
-                <div className="liquid-glass rounded-full inline-flex px-4 py-1.5 text-xs font-medium mb-6">HealthTech â€¢ Multimodal AI PWA</div>
-                <h3 className="text-4xl font-heading italic mb-4">MedSwift</h3>
-                <p className="text-white/70 font-light leading-relaxed mb-6">
-                  Pharmaceutical intelligence engine turning a mobile camera into a medical auditing tool. Features a triple-tier AI resilience pipeline (Gemini 2.0 Flash â†’ Gemini 1.5 Pro â†’ Claude fallback) and an offline-first PWA architecture for low-connectivity environments.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-8">
+                  <div className="absolute inset-0 animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[1.5rem]" />
+                </motion.div>
+              </motion.div>
+              <motion.div variants={slideInRight} className="w-full lg:w-1/2">
+                <motion.div variants={liftUp} className="liquid-glass rounded-full inline-flex px-4 py-1.5 text-xs font-medium mb-6">HealthTech • Multimodal AI PWA</motion.div>
+                <motion.h3 variants={fadeUp} className="text-4xl font-heading italic mb-4">MedSwift</motion.h3>
+                <motion.p variants={staggerItem} className="text-white/70 font-light leading-relaxed mb-6">
+                  Pharmaceutical intelligence engine turning a mobile camera into a medical auditing tool. Features a triple-tier AI resilience pipeline (Gemini 2.0 Flash → Gemini 1.5 Pro → Claude fallback) and an offline-first PWA architecture for low-connectivity environments.
+                </motion.p>
+                <motion.div variants={staggerContainer(0.07, 0.1)} initial="hidden" whileInView="visible" viewport={viewport} className="flex flex-wrap gap-2 mb-8">
                   {['Vanilla JS', 'PWA', 'Gemini AI', 'OCR.space'].map(tech => (
-                    <span key={tech} className="liquid-glass px-3 py-1 rounded-full text-xs">{tech}</span>
+                    <motion.span key={tech} variants={staggerItem} className="liquid-glass px-3 py-1 rounded-full text-xs">{tech}</motion.span>
                   ))}
-                </div>
-                <a href="https://med-swift-six.vercel.app" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium hover:text-emerald-400 transition-colors">
+                </motion.div>
+                <motion.a variants={fadeIn} href="https://med-swift-six.vercel.app" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium hover:text-emerald-400 transition-colors">
                   View Live App <ArrowUpRight className="w-4 h-4" />
-                </a>
-              </div>
+                </motion.a>
+              </motion.div>
             </motion.div>
 
             {/* Accommodate Me */}
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
+              variants={staggerContainer(0.15, 0)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewport}
               className="flex flex-col lg:flex-row gap-12 items-center"
             >
-              <div className="w-full lg:w-1/2 order-2 lg:order-1">
-                <div className="liquid-glass rounded-full inline-flex px-4 py-1.5 text-xs font-medium mb-6">Civic Tech â€¢ Real Estate</div>
-                <h3 className="text-4xl font-heading italic mb-4">Accommodate-Me</h3>
-                <p className="text-white/70 font-light leading-relaxed mb-6">
+              <motion.div variants={slideInLeft} className="w-full lg:w-1/2 order-2 lg:order-1">
+                <motion.div variants={liftUp} className="liquid-glass rounded-full inline-flex px-4 py-1.5 text-xs font-medium mb-6">Civic Tech • Real Estate</motion.div>
+                <motion.h3 variants={fadeUp} className="text-4xl font-heading italic mb-4">Accommodate-Me</motion.h3>
+                <motion.p variants={staggerItem} className="text-white/70 font-light leading-relaxed mb-6">
                   Centralized housing platform connecting university students with verified, secure landlords in Uganda. Built to ensure safety, transparency, and seamless digital booking.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-8">
+                </motion.p>
+                <motion.div variants={staggerContainer(0.07, 0.1)} initial="hidden" whileInView="visible" viewport={viewport} className="flex flex-wrap gap-2 mb-8">
                   {['Full-Stack', 'PostgreSQL', 'Web'].map(tech => (
-                    <span key={tech} className="liquid-glass px-3 py-1 rounded-full text-xs">{tech}</span>
+                    <motion.span key={tech} variants={staggerItem} className="liquid-glass px-3 py-1 rounded-full text-xs">{tech}</motion.span>
                   ))}
-                </div>
-                <a href="#" onClick={(e) => { e.preventDefault(); alert('Deployment link coming soon!'); }} className="inline-flex items-center gap-2 text-sm font-medium hover:text-purple-400 transition-colors">
+                </motion.div>
+                <motion.a variants={fadeIn} href="#" onClick={(e) => { e.preventDefault(); alert('Deployment link coming soon!'); }} className="inline-flex items-center gap-2 text-sm font-medium hover:text-purple-400 transition-colors">
                   View Live Website <ArrowUpRight className="w-4 h-4" />
-                </a>
-              </div>
-              <div className="w-full lg:w-1/2 order-1 lg:order-2">
-                <div className="aspect-[16/10] liquid-glass-strong rounded-[2rem] p-2 relative overflow-hidden group">
-                  <img src={accommodateMeImage} alt="Accommodate Me Platform" className="w-full h-full object-cover rounded-[1.5rem] transition-all duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-bl from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[1.5rem]"></div>
-                </div>
-              </div>
+                </motion.a>
+              </motion.div>
+              <motion.div variants={slideInRight} className="w-full lg:w-1/2 order-1 lg:order-2">
+                <motion.div variants={scaleIn} className="aspect-[16/10] liquid-glass-strong rounded-[2rem] p-2 relative overflow-hidden group">
+                  <img src={accommodateMeImage} alt="Accommodate Me Platform" className="w-full h-full object-cover object-top rounded-[1.5rem] transition-all duration-700 group-hover:scale-[1.02]" />
+                  <div className="absolute inset-0 bg-gradient-to-bl from-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[1.5rem]"></div>
+                  <div className="absolute inset-0 animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[1.5rem]" />
+                </motion.div>
+              </motion.div>
             </motion.div>
           </div>
 
           {/* Other Notable Projects */}
           <div className="mt-32">
-            <div className="text-sm font-body text-blue-400 mb-8">// OTHER NOTABLE WORK</div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div variants={staggerItem} className="text-sm font-body text-gradient-emerald-gold font-semibold mb-8">// OTHER NOTABLE WORK</motion.div>
+            <motion.div
+              variants={staggerContainer(0.1, 0.1)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewport}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
 
               {/* KUA */}
               <motion.a
+                variants={staggerItem}
                 href="https://egabo-tech.github.io/KUA/"
                 target="_blank"
                 rel="noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: 0.1 }}
                 className="liquid-glass rounded-[1.5rem] p-6 flex flex-col group hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <div className="flex justify-between items-start mb-4">
@@ -678,13 +701,10 @@ function App() {
 
               {/* RITAH-STYLES (Replaces Accommodate Me) */}
               <motion.a
+                variants={staggerItem}
                 href="https://ritah-styles-ug.vercel.app"
                 target="_blank"
                 rel="noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: 0.2 }}
                 className="liquid-glass rounded-[1.5rem] p-6 flex flex-col group hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <div className="flex justify-between items-start mb-4">
@@ -693,7 +713,7 @@ function App() {
                 </div>
                 <h4 className="text-2xl font-heading italic mb-2">RITAH-STYLES</h4>
                 <p className="text-sm text-white/60 font-light leading-relaxed mb-6 flex-1">
-                  Digital presence website for Ritah Styles â€” a fashion & beauty brand. Clean, modern brand site with full Vercel deployment.
+                  Digital presence website for Ritah Styles” a fashion & beauty brand. Clean, modern brand site with full Vercel deployment.
                 </p>
                 <div className="flex flex-wrap gap-2 mt-auto">
                   {['HTML', 'CSS', 'Fashion'].map(tech => (
@@ -704,12 +724,9 @@ function App() {
 
               {/* Resume Builder */}
               <motion.a
+                variants={staggerItem}
                 href="#"
                 onClick={(e) => { e.preventDefault(); alert('Deployment link coming soon!'); }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: 0.3 }}
                 className="liquid-glass rounded-[1.5rem] p-6 flex flex-col group hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <div className="flex justify-between items-start mb-4">
@@ -729,12 +746,9 @@ function App() {
 
               {/* AMA-TUALU FOUNDATION */}
               <motion.a
+                variants={staggerItem}
                 href="#"
                 onClick={(e) => { e.preventDefault(); alert('Deployment link coming soon!'); }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: 0.4 }}
                 className="liquid-glass rounded-[1.5rem] p-6 flex flex-col group hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <div className="flex justify-between items-start mb-4">
@@ -754,12 +768,9 @@ function App() {
 
               {/* Simple C Calculator */}
               <motion.a
+                variants={staggerItem}
                 href="#"
                 onClick={(e) => { e.preventDefault(); alert('Deployment link coming soon!'); }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: 0.5 }}
                 className="liquid-glass rounded-[1.5rem] p-6 flex flex-col group hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <div className="flex justify-between items-start mb-4">
@@ -779,12 +790,9 @@ function App() {
 
               {/* RUST COHORT */}
               <motion.a
+                variants={staggerItem}
                 href="#"
                 onClick={(e) => { e.preventDefault(); alert('Deployment link coming soon!'); }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: 0.6 }}
                 className="liquid-glass rounded-[1.5rem] p-6 flex flex-col group hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <div className="flex justify-between items-start mb-4">
@@ -802,7 +810,7 @@ function App() {
                 </div>
               </motion.a>
 
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -841,11 +849,11 @@ function App() {
         );
 
         const ReviewCard = ({ r }: { r: typeof track1[0] }) => (
-          <div className={`shrink-0 w-[380px] liquid-glass rounded-[1.5rem] p-7 border ${r.border} bg-gradient-to-br ${r.color} flex flex-col gap-5`}>
+          <div className="shrink-0 w-[380px] liquid-glass rounded-[1.5rem] p-7 border border-emerald-500/10 bg-gradient-to-br from-emerald-500/5 to-transparent flex flex-col gap-5">
             <div className="flex gap-1">{[0, 1, 2, 3, 4].map(i => <StarIcon key={i} />)}</div>
             <p className="text-sm text-white/75 font-light leading-relaxed flex-1">"{r.quote}"</p>
             <div className="flex items-center gap-3 pt-2 border-t border-white/5">
-              <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${r.color} border ${r.border} flex items-center justify-center text-xs font-semibold text-white shrink-0`}>{r.avatar}</div>
+              <div className={`w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-amber-500 border border-emerald-400/20 flex items-center justify-center text-xs font-semibold text-white shrink-0`}>{r.avatar}</div>
               <div>
                 <div className="text-sm font-medium text-white">{r.name}</div>
                 <div className="text-[11px] text-white/40 font-light">{r.role}</div>
@@ -857,7 +865,7 @@ function App() {
         return (
           <section id="reviews" className="relative z-10 py-32 overflow-hidden border-t border-white/5">
             <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 lg:px-24 mb-16">
-              <div className="text-sm font-body text-blue-400 mb-4">// CLIENT REVIEWS</div>
+              <div className="text-sm font-body text-gradient-emerald-gold font-semibold mb-4">// CLIENT REVIEWS</div>
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading italic leading-tight tracking-[-2px]">What They Say</h2>
                 <p className="text-white/50 text-sm max-w-xs leading-relaxed font-light">Trusted by founders, engineers and institutions across Uganda and beyond.</p>
@@ -887,38 +895,52 @@ function App() {
         );
       })()}
 
-      <section id="contact" className="relative z-10 pt-32 px-4 md:px-8 border-t border-white/10 bg-black/40">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="text-[10px] tracking-[0.2em] uppercase font-medium text-white/50 mb-6">Let's Build Together</div>
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading mb-2">Start Your</h2>
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading italic text-purple-400 mb-8">Project</h2>
-          <p className="text-white/60 text-sm max-w-md mx-auto leading-relaxed">
+      <section id="contact" className="relative z-10 pt-32 px-4 md:px-8 border-t border-white/10 bg-[#020818]/60 overflow-hidden">
+        {/* Ambient orb */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-72 bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none animate-pulse-slow" />
+        <motion.div
+          variants={staggerContainer(0.1)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          className="max-w-3xl mx-auto text-center mb-16"
+        >
+          <motion.div variants={fadeIn} className="text-[10px] tracking-[0.2em] uppercase font-medium text-white/50 mb-6">Let's Build Together</motion.div>
+          <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl lg:text-7xl font-heading mb-2">Start Your</motion.h2>
+          <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl lg:text-7xl font-heading italic text-emerald-500 mb-8">Project</motion.h2>
+          <motion.p variants={staggerItem} className="text-white/60 text-sm max-w-md mx-auto leading-relaxed">
             Whether you have a clear vision or just a feeling, let's have a conversation. I'll help you bring your software product to life.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="max-w-2xl mx-auto mb-32">
+        <motion.div
+          variants={staggerContainer(0.08, 0.2)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          className="max-w-2xl mx-auto mb-32 relative"
+        >
           <form className="flex flex-col gap-8" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div variants={staggerItem} className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="flex flex-col gap-3">
                 <label className="text-[10px] tracking-[0.15em] uppercase text-white/60 font-medium">First Name</label>
-                <input type="text" placeholder="Your first name" className="bg-transparent border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:outline-none focus:border-purple-500 transition-colors text-white placeholder:text-white/20" />
+                <input type="text" placeholder="Your first name" className="bg-transparent border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors text-emerald-50 placeholder:text-emerald-50/20" />
               </div>
               <div className="flex flex-col gap-3">
                 <label className="text-[10px] tracking-[0.15em] uppercase text-white/60 font-medium">Last Name</label>
-                <input type="text" placeholder="Your last name" className="bg-transparent border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:outline-none focus:border-purple-500 transition-colors text-white placeholder:text-white/20" />
+                <input type="text" placeholder="Your last name" className="bg-transparent border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors text-emerald-50 placeholder:text-emerald-50/20" />
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col gap-3">
+            <motion.div variants={staggerItem} className="flex flex-col gap-3">
               <label className="text-[10px] tracking-[0.15em] uppercase text-white/60 font-medium">Email Address</label>
-              <input type="email" placeholder="your@email.com" className="bg-transparent border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:outline-none focus:border-purple-500 transition-colors text-white placeholder:text-white/20" />
-            </div>
+              <input type="email" placeholder="your@email.com" className="bg-transparent border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors text-emerald-50 placeholder:text-emerald-50/20" />
+            </motion.div>
 
-            <div className="flex flex-col gap-3">
+            <motion.div variants={staggerItem} className="flex flex-col gap-3">
               <label className="text-[10px] tracking-[0.15em] uppercase text-white/60 font-medium">I'm Interested In</label>
               <div className="relative">
-                <select className="w-full bg-transparent border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:outline-none focus:border-purple-500 transition-colors text-white/80 appearance-none">
+                <select className="w-full bg-transparent border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors text-emerald-50/80 appearance-none">
                   <option className="bg-[#0a0014]">Select a service</option>
                   <option className="bg-[#0a0014]">Full-Stack Web Development</option>
                   <option className="bg-[#0a0014]">Systems Architecture</option>
@@ -929,52 +951,85 @@ function App() {
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-col gap-3">
+            <motion.div variants={staggerItem} className="flex flex-col gap-3">
               <label className="text-[10px] tracking-[0.15em] uppercase text-white/60 font-medium">Tell Me About Your Vision</label>
-              <textarea rows={5} placeholder="Describe the project, stack, or problem you want to solve..." className="bg-transparent border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:outline-none focus:border-purple-500 transition-colors text-white placeholder:text-white/20 resize-none"></textarea>
-            </div>
+              <textarea rows={5} placeholder="Describe the project, stack, or problem you want to solve..." className="bg-transparent border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors text-white placeholder:text-white/20 resize-none"></textarea>
+            </motion.div>
 
-            <div className="flex flex-col items-center mt-4">
-              <button type="submit" className="liquid-glass rounded-full px-10 py-4 text-[10px] tracking-[0.2em] font-medium uppercase hover:bg-white/10 transition-all duration-300 flex items-center gap-2 mb-6 w-full md:w-auto justify-center border border-white/10 hover:border-purple-500/50 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] text-white/80 hover:text-white">
+            <motion.div variants={staggerItem} className="flex flex-col items-center mt-4">
+              <button type="submit" className="liquid-glass rounded-full px-10 py-4 text-[10px] tracking-[0.2em] font-medium uppercase hover:bg-white/10 transition-all duration-300 flex items-center gap-2 mb-6 w-full md:w-auto justify-center border border-white/10 hover:border-emerald-500/50 hover:shadow-[0_0_15px_rgba(16,185,129,0.3)] text-white/80 hover:text-white">
                 Send My Request <ArrowUpRight className="w-4 h-4" />
               </button>
               <span className="text-xs text-white/40 font-light">I'll reply within 24 hours to schedule a discovery call.</span>
-            </div>
+            </motion.div>
           </form>
-        </div>
+        </motion.div>
 
         {/* Footer Bottom Area */}
         <div className="w-full bg-[#05000a]/80 border-t border-white/5 py-20 px-4 sm:px-8 md:px-16 lg:px-24 rounded-t-[3rem] backdrop-blur-md">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
-              <div className="col-span-1 md:col-span-4 lg:col-span-4">
+            <motion.div
+              variants={staggerContainer(0.1, 0.1)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewport}
+              className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16"
+            >
+              <motion.div variants={staggerItem} className="col-span-1 md:col-span-4 lg:col-span-4">
                 <div className="flex items-center gap-3 mb-6">
                   <img src={eaLogo} alt="Egabo Aaron Logo" className="w-10 h-10 rounded-xl object-cover border border-white/10 shadow-lg" />
                   <h3 className="text-2xl font-heading italic text-white">Egabo Aaron</h3>
                 </div>
                 <p className="text-sm text-white/50 leading-relaxed mb-8 pr-4">
-                  Pragmatic Software Engineer â€” crafting scalable solutions for businesses that deserve to feel extraordinary.
+                  Pragmatic Software Engineer” crafting scalable solutions for businesses that deserve to feel extraordinary.
                 </p>
-                <div className="flex gap-3">
-                  <a href="https://github.com/EGABO-TECH" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"><GithubIcon className="w-4 h-4" /></a>
-                  <a href="https://linkedin.com/in/egaboaaron" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"><LinkedinIcon className="w-4 h-4" /></a>
-                  <a href="https://x.com/WanEgabo" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"><TwitterIcon className="w-4 h-4" /></a>
+                <div className="flex gap-4">
+                  {/* GitHub */}
+                  <a
+                    href="https://github.com/EGABO-TECH"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="GitHub"
+                    className="group w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:bg-[#24292e] hover:border-[#24292e] transition-all duration-300 hover:shadow-[0_0_16px_rgba(36,41,46,0.6)]"
+                  >
+                    <GithubIcon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                  </a>
+                  {/* LinkedIn */}
+                  <a
+                    href="https://linkedin.com/in/egaboaaron"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="LinkedIn"
+                    className="group w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:bg-[#0077b5] hover:border-[#0077b5] transition-all duration-300 hover:shadow-[0_0_16px_rgba(0,119,181,0.5)]"
+                  >
+                    <LinkedinIcon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                  </a>
+                  {/* X / Twitter */}
+                  <a
+                    href="https://x.com/WanEgabo"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="X (Twitter)"
+                    className="group w-11 h-11 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:bg-[#14171a] hover:border-white/40 transition-all duration-300 hover:shadow-[0_0_16px_rgba(255,255,255,0.15)]"
+                  >
+                    <TwitterIcon className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+                  </a>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="col-span-1 md:col-span-2 lg:col-span-2">
+              <motion.div variants={staggerItem} className="col-span-1 md:col-span-2 lg:col-span-2">
                 <h4 className="text-[10px] tracking-[0.2em] uppercase text-white/40 mb-8 font-medium">Navigate</h4>
                 <ul className="flex flex-col gap-5 text-sm text-white/70 font-light">
-                  <li><a href="#home" className="hover:text-purple-400 transition-colors">Home</a></li>
-                  <li><a href="#projects" className="hover:text-purple-400 transition-colors">Projects</a></li>
-                  <li><a href="#skills" className="hover:text-purple-400 transition-colors">Technical Arsenal</a></li>
-                  <li><a href="#github" className="hover:text-purple-400 transition-colors">Open Source</a></li>
+                  <li><a href="#home" className="hover:text-emerald-400 transition-colors">Home</a></li>
+                  <li><a href="#projects" className="hover:text-emerald-400 transition-colors">Projects</a></li>
+                  <li><a href="#skills" className="hover:text-emerald-400 transition-colors">Technical Arsenal</a></li>
+                  <li><a href="#github" className="hover:text-emerald-400 transition-colors">Open Source</a></li>
                 </ul>
-              </div>
+              </motion.div>
 
-              <div className="col-span-1 md:col-span-3 lg:col-span-2">
+              <motion.div variants={staggerItem} className="col-span-1 md:col-span-3 lg:col-span-2">
                 <h4 className="text-[10px] tracking-[0.2em] uppercase text-white/40 mb-8 font-medium">Services</h4>
                 <ul className="flex flex-col gap-5 text-sm text-white/70 font-light">
                   <li>Full-Stack Web Dev</li>
@@ -983,9 +1038,9 @@ function App() {
                   <li>Technical Consultation</li>
                   <li>MVP Prototyping</li>
                 </ul>
-              </div>
+              </motion.div>
 
-              <div className="col-span-1 md:col-span-3 lg:col-span-4 flex flex-col">
+              <motion.div variants={staggerItem} className="col-span-1 md:col-span-3 lg:col-span-4 flex flex-col">
                 <h4 className="text-[10px] tracking-[0.2em] uppercase text-white/40 mb-8 font-medium">Visit Me</h4>
 
                 <div className="flex flex-col gap-6 text-sm text-white/70 font-light mb-8">
@@ -995,7 +1050,7 @@ function App() {
                   </div>
                   <div className="flex items-start gap-3">
                     <svg className="w-4 h-4 text-white/30 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    <a href="mailto:aaronegabo@gmail.com" className="hover:text-purple-400 transition-colors">aaronegabo@gmail.com</a>
+                    <a href="mailto:aaronegabo@gmail.com" className="hover:text-emerald-400 transition-colors">aaronegabo@gmail.com</a>
                   </div>
                 </div>
 
@@ -1012,12 +1067,63 @@ function App() {
                     className="absolute inset-0"
                   ></iframe>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
 
+            {/* ── Newsletter Strip ───────────────────────────────────────── */}
+            <motion.div
+              variants={staggerContainer(0.1, 0.1)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewport}
+              className="liquid-glass-strong rounded-[2rem] px-8 py-10 mb-12 flex flex-col lg:flex-row items-center justify-between gap-8 border border-emerald-500/20 relative overflow-hidden"
+            >
+              {/* Ambient glow */}
+              <div className="absolute -top-16 left-1/4 w-72 h-36 bg-amber-500/10 rounded-full blur-[60px] pointer-events-none" />
+              <div className="absolute -bottom-16 right-1/4 w-72 h-36 bg-emerald-500/10 rounded-full blur-[60px] pointer-events-none" />
+
+              <motion.div variants={staggerItem} className="relative z-10 text-center lg:text-left">
+                <p className="text-[10px] tracking-[0.25em] uppercase text-gradient-emerald-gold font-semibold mb-2">Stay in the Loop</p>
+                <h3 className="text-2xl md:text-3xl font-heading italic leading-tight mb-2">
+                  Get updates on my latest
+                  <span className="text-gradient-emerald-gold"> projects & insights</span>
+                </h3>
+                <p className="text-sm text-white/50 font-light max-w-md">No spam. Just occasional drops on what I'm building, learning, and shipping.</p>
+              </motion.div>
+
+              <motion.div variants={staggerItem} className="relative z-10 w-full lg:w-auto">
+                <form
+                  onSubmit={(e) => { e.preventDefault(); alert('Thanks for subscribing! 🎉'); }}
+                  className="flex flex-col sm:flex-row gap-3 w-full lg:min-w-[420px]"
+                >
+                  <div className="relative flex-1">
+                    <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    <input
+                      id="newsletter-email"
+                      type="email"
+                      required
+                      placeholder="your@email.com"
+                      className="w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-sm text-slate-200 placeholder:text-white/30 focus:outline-none focus:border-emerald-500/60 focus:bg-white/8 transition-all duration-300"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="shrink-0 px-7 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-amber-400 text-black font-semibold text-sm hover:from-emerald-400 hover:to-amber-300 transition-all duration-300 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] flex items-center gap-2 justify-center"
+                  >
+                    Subscribe
+                    <ArrowUpRight className="w-4 h-4" />
+                  </button>
+                </form>
+              </motion.div>
+            </motion.div>
+
+            {/* ── Bottom copyright bar ───────────────────────────────────── */}
             <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30 font-light">
-              <div>Â© {new Date().getFullYear()} Egabo Aaron. All rights reserved.</div>
+              <div>© {new Date().getFullYear()} Egabo Aaron. All rights reserved.</div>
               <div className="flex gap-8">
                 <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
                 <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
