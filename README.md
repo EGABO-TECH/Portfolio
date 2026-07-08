@@ -1,7 +1,7 @@
 # Egabo Aaron Portfolio
 
 <p align="center">
-  <img src="Assets/egabo-aaron.png" alt="Egabo Aaron" width="100%" />
+  <img src="./Assets/egabo-aaron.png" alt="Egabo Aaron" width="100%" />
 </p>
 
 A high-end, immersive portfolio experience for Egabo Aaron — a pragmatic software engineer building resilient products, intelligent systems, and human-centered digital experiences across Uganda and beyond.
