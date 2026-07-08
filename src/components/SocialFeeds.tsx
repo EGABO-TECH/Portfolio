@@ -92,7 +92,7 @@ const SocialFeeds = () => {
           transition={{ duration: 0.7 }}
           className="mb-12"
         >
-          <div className="text-sm font-body text-red-400 mb-4">// CONTENT CREATION AND EVENTS</div>
+          <div className="text-sm font-body text-gradient-emerald-gold font-semibold mb-4">// CONTENT CREATION AND EVENTS</div>
           <h2 className="text-5xl md:text-6xl font-heading italic leading-tight tracking-[-2px] mb-8">
             Ideas in Motion
           </h2>
@@ -106,9 +106,9 @@ const SocialFeeds = () => {
           className="flex flex-wrap gap-3 mb-12"
         >
           {[
-            { id: 'YouTube' as const, icon: <YoutubeIcon className="w-4 h-4" />, color: 'hover:text-red-500', activeClass: 'border-red-500/30 text-red-400 bg-red-500/10' },
-            { id: 'TikTok' as const, icon: <TikTokIcon className="w-4 h-4" />, color: 'hover:text-pink-400', activeClass: 'border-pink-400/30 text-pink-400 bg-pink-400/10' },
-            { id: 'LinkedIn' as const, icon: <LinkedinIcon className="w-4 h-4" />, color: 'hover:text-blue-400', activeClass: 'border-blue-400/30 text-blue-400 bg-blue-400/10' }
+            { id: 'YouTube' as const, icon: <YoutubeIcon className="w-4 h-4" />, color: 'hover:text-amber-500', activeClass: 'border-amber-500/30 text-amber-400 bg-amber-500/10' },
+            { id: 'TikTok' as const, icon: <TikTokIcon className="w-4 h-4" />, color: 'hover:text-emerald-400', activeClass: 'border-emerald-400/30 text-emerald-400 bg-emerald-400/10' },
+            { id: 'LinkedIn' as const, icon: <LinkedinIcon className="w-4 h-4" />, color: 'hover:text-teal-400', activeClass: 'border-teal-400/30 text-teal-400 bg-teal-400/10' }
           ].map((tab) => (
             <button
               key={tab.id}
@@ -138,7 +138,7 @@ const SocialFeeds = () => {
               <div className="space-y-6">
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="text-2xl font-heading italic text-white/90">Latest from YinandYangShadow</h3>
-                  <a href="https://www.youtube.com/@YinandYangShadow" target="_blank" rel="noreferrer" className="text-sm text-red-400 hover:text-red-300 flex items-center gap-1">
+                  <a href="https://www.youtube.com/@YinandYangShadow" target="_blank" rel="noreferrer" className="text-sm text-amber-400 hover:text-amber-300 flex items-center gap-1">
                     Subscribe <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
@@ -149,9 +149,9 @@ const SocialFeeds = () => {
                   </div>
                 ) : videos.length === 0 ? (
                   <div className="flex flex-col items-center justify-center h-64 liquid-glass rounded-[2rem] text-center px-8">
-                    <YoutubeIcon className="w-12 h-12 text-red-400/30 mb-4" />
+                    <YoutubeIcon className="w-12 h-12 text-amber-400/30 mb-4" />
                     <p className="text-white/50 text-sm">No videos found. Visit the channel directly.</p>
-                    <a href="https://www.youtube.com/@YinandYangShadow" target="_blank" rel="noreferrer" className="mt-4 text-red-400 text-sm hover:text-red-300 flex items-center gap-1">Visit Channel <ExternalLink className="w-3.5 h-3.5" /></a>
+                    <a href="https://www.youtube.com/@YinandYangShadow" target="_blank" rel="noreferrer" className="mt-4 text-amber-400 text-sm hover:text-amber-300 flex items-center gap-1">Visit Channel <ExternalLink className="w-3.5 h-3.5" /></a>
                   </div>
                 ) : (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -161,7 +161,7 @@ const SocialFeeds = () => {
                         href={video.link} 
                         target="_blank" 
                         rel="noreferrer"
-                        className="group liquid-glass rounded-[1.5rem] overflow-hidden flex flex-col hover:border-red-500/30 transition-colors"
+                        className="group liquid-glass rounded-[1.5rem] overflow-hidden flex flex-col hover:border-amber-500/30 transition-colors"
                       >
                         <div className="relative aspect-video overflow-hidden">
                           <img 
@@ -191,14 +191,14 @@ const SocialFeeds = () => {
               <div className="space-y-6">
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="text-2xl font-heading italic text-white/90">TikTok Vibes</h3>
-                  <a href="https://www.tiktok.com/@EGABO" target="_blank" rel="noreferrer" className="text-sm text-pink-400 hover:text-pink-300 flex items-center gap-1">
+                  <a href="https://www.tiktok.com/@EGABO" target="_blank" rel="noreferrer" className="text-sm text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
                     Follow @EGABO <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="liquid-glass-strong rounded-[2rem] p-8 flex flex-col justify-center items-center text-center">
-                    <TikTokIcon className="w-16 h-16 text-pink-400/20 mb-6" />
+                    <TikTokIcon className="w-16 h-16 text-emerald-400/20 mb-6" />
                     <h4 className="text-xl font-medium mb-3">Auto-Updating Grid Support</h4>
                     <p className="text-sm text-white/60 mb-6 max-w-sm">
                       To display an auto-updating grid of your TikTok videos without a backend, we recommend embedding a free widget like Elfsight or Tagembed here.
@@ -210,15 +210,15 @@ const SocialFeeds = () => {
                   
                   {/* Stylized Profile Card Placeholder */}
                   <div className="liquid-glass rounded-[2rem] overflow-hidden relative group cursor-pointer" onClick={() => window.open('https://www.tiktok.com/@EGABO', '_blank')}>
-                    <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent"></div>
                     <div className="p-8 h-full flex flex-col items-center justify-center relative z-10">
-                       <div className="w-24 h-24 rounded-full liquid-glass flex items-center justify-center mb-4 border border-pink-400/30">
+                       <div className="w-24 h-24 rounded-full liquid-glass flex items-center justify-center mb-4 border border-emerald-400/30">
                           <span className="font-heading italic text-3xl">ea</span>
                        </div>
                        <h4 className="text-2xl font-bold">@EGABO</h4>
                        <p className="text-white/50 mt-2 text-sm">Tech, Innovation & Philosophy</p>
                        <div className="mt-6 flex gap-4 text-sm font-medium">
-                          <span className="text-pink-400">View on TikTok &rarr;</span>
+                          <span className="text-emerald-400">View on TikTok &rarr;</span>
                        </div>
                     </div>
                   </div>
@@ -231,14 +231,14 @@ const SocialFeeds = () => {
               <div className="space-y-6">
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="text-2xl font-heading italic text-white/90">Professional Network</h3>
-                  <a href="https://linkedin.com/in/egaboaaron" target="_blank" rel="noreferrer" className="text-sm text-blue-400 hover:text-blue-300 flex items-center gap-1">
+                  <a href="https://linkedin.com/in/egaboaaron" target="_blank" rel="noreferrer" className="text-sm text-teal-400 hover:text-teal-300 flex items-center gap-1">
                     Connect <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="liquid-glass-strong rounded-[2rem] p-8 flex flex-col justify-center items-center text-center">
-                    <LinkedinIcon className="w-16 h-16 text-blue-400/20 mb-6" />
+                    <LinkedinIcon className="w-16 h-16 text-teal-400/20 mb-6" />
                     <h4 className="text-xl font-medium mb-3">LinkedIn Posts Feed</h4>
                     <p className="text-sm text-white/60 mb-6 max-w-sm">
                       Embed your latest professional milestones here. You can paste the official LinkedIn embed code for a featured post, or use a widget for an auto-updating wall.
@@ -249,16 +249,16 @@ const SocialFeeds = () => {
                   </div>
 
                   <div className="liquid-glass rounded-[2rem] overflow-hidden relative group cursor-pointer" onClick={() => window.open('https://linkedin.com/in/egaboaaron', '_blank')}>
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-transparent"></div>
                     <div className="p-8 h-full flex flex-col justify-center relative z-10">
                        <h4 className="text-2xl font-bold mb-1">Egabo Aaron</h4>
-                       <p className="text-blue-300/80 text-sm mb-4">Software Engineer | Co-Founder RENOA</p>
+                       <p className="text-teal-300/80 text-sm mb-4">Software Engineer | Co-Founder RENOA</p>
                        <p className="text-white/60 text-sm font-light leading-relaxed mb-6">
                          Specializing in offline-resilient architecture, AI integration, and building reliable, community-focused software for Africa.
                        </p>
                        <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-4">
                           <span className="text-white/40 text-xs">Uganda</span>
-                          <span className="text-blue-400 text-sm font-medium">View Profile &rarr;</span>
+                          <span className="text-teal-400 text-sm font-medium">View Profile &rarr;</span>
                        </div>
                     </div>
                   </div>
