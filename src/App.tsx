@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, GitFork, Star, Globe, BookOpen, User, Flame, Rocket } from 'lucide-react';
 import { fadeUp, fadeIn, slideInLeft, slideInRight, scaleIn, staggerContainer, staggerItem, liftUp, viewport } from './lib/motionVariants';
@@ -21,6 +21,92 @@ const AbstractBackground = () => (
     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
     {/* Grid */}
     <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+  </div>
+);
+
+const BeehiivNewsletter = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || container.querySelector('script[src*="beehiiv"]')) return;
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://subscribe-forms.beehiiv.com/v3/loader.js';
+    script.setAttribute('data-beehiiv-form', '37aef124-d485-4ab8-8b9b-6ebfdfdbd529');
+    container.appendChild(script);
+  }, []);
+
+  return (
+    <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#07131b] via-[#080d16] to-[#060b11] p-8 md:p-10 shadow-[0_25px_80px_rgba(0,0,0,0.35)] mb-12">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.18),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.16),transparent_45%)]" />
+      <div className="relative z-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+        <div className="max-w-2xl">
+          <p className="text-[10px] tracking-[0.25em] uppercase text-emerald-400/80 font-semibold mb-3">Official Newsletter</p>
+          <h3 className="text-3xl md:text-4xl font-heading italic leading-tight mb-3 text-white">
+            Join 500+ subscribers receiving the sharpest notes from my work.
+          </h3>
+          <p className="text-sm md:text-base text-white/65 leading-relaxed">
+            Be part of a thoughtful circle of readers who get software insights, product thinking, and the next builds I’m shipping.
+          </p>
+        </div>
+        <div className="w-full lg:max-w-[430px]">
+          <div ref={containerRef} className="min-h-[180px]" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+type PageView = 'home' | 'privacy' | 'terms';
+
+const LegalPage = ({
+  title,
+  intro,
+  sections,
+  onBack,
+}: {
+  title: string;
+  intro: string;
+  sections: Array<{ title: string; content: string | string[] }>;
+  onBack: () => void;
+}) => (
+  <div className="min-h-screen bg-[#020818] text-white">
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-[#020818] to-[#020818]" />
+    <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+    <div className="relative z-10 mx-auto flex max-w-5xl flex-col px-6 py-20 md:px-10 lg:px-16">
+      <button
+        type="button"
+        onClick={onBack}
+        className="mb-8 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70 transition hover:border-emerald-500/40 hover:text-white"
+      >
+        <span aria-hidden="true">←</span> Back to portfolio
+      </button>
+
+      <div className="rounded-[2rem] border border-white/10 bg-[#060b11]/80 p-8 shadow-[0_25px_80px_rgba(0,0,0,0.35)] md:p-10">
+        <p className="mb-3 text-[10px] tracking-[0.25em] uppercase text-emerald-400/80">Legal</p>
+        <h1 className="text-3xl font-heading italic text-white md:text-4xl">{title}</h1>
+        <p className="mt-4 max-w-3xl text-sm leading-7 text-white/70 md:text-base">{intro}</p>
+
+        <div className="mt-10 space-y-6">
+          {sections.map((section) => (
+            <section key={section.title} className="rounded-[1.25rem] border border-white/10 bg-white/5 p-6 md:p-8">
+              <h2 className="mb-3 text-xl font-semibold text-white">{section.title}</h2>
+              {Array.isArray(section.content) ? (
+                <ul className="space-y-3 text-sm leading-7 text-white/70">
+                  {section.content.map((item) => (
+                    <li key={item} className="pl-4">• {item}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-sm leading-7 text-white/70">{section.content}</p>
+              )}
+            </section>
+          ))}
+        </div>
+      </div>
+    </div>
   </div>
 );
 
@@ -500,6 +586,120 @@ const GitHubSection = () => {
 };
 
 function App() {
+  const [activePage, setActivePage] = useState<PageView>('home');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [activePage]);
+
+  if (activePage === 'privacy') {
+    return (
+      <LegalPage
+        title="Privacy Policy"
+        intro="This Privacy Policy explains how Egabo Aaron collects, uses, stores, and protects information when you visit this portfolio website or interact with its content, newsletter, or contact forms."
+        onBack={() => setActivePage('home')}
+        sections={[
+          {
+            title: '1. Information We Collect',
+            content: [
+              'Information you voluntarily provide through the contact form, such as your name, email address, and project details.',
+              'Newsletter subscription data if you join the mailing list, including your email address and subscription preferences.',
+              'Technical information automatically collected through your browser, such as IP address, device type, browser version, referring pages, and interaction data.',
+            ],
+          },
+          {
+            title: '2. How We Use Your Information',
+            content: [
+              'To respond to inquiries, discuss collaboration opportunities, and provide project-related support.',
+              'To send newsletter updates, product notes, and relevant portfolio content if you have subscribed.',
+              'To improve website performance, understand visitor behavior, and maintain site security.',
+            ],
+          },
+          {
+            title: '3. Cookies and Analytics',
+            content: 'This website may use cookies, local storage, or analytics tools to improve functionality and understand visitor engagement. You may disable cookies in your browser settings, though some features may be affected.',
+          },
+          {
+            title: '4. Third-Party Services',
+            content: [
+              'Embedded content and external services may process data in accordance with their own privacy policies, including newsletter providers and analytics platforms.',
+              'Links to GitHub, LinkedIn, X, and other external services are provided for convenience and are governed by those platforms’ own terms and privacy practices.',
+            ],
+          },
+          {
+            title: '5. Data Security',
+            content: 'We take reasonable technical and organizational precautions to protect personal information from unauthorized access, misuse, alteration, or disclosure. No method of transmission over the internet is completely secure, however.',
+          },
+          {
+            title: '6. Your Rights',
+            content: [
+              'You may request access to, correction of, or deletion of your personal data where applicable.',
+              'You may unsubscribe from marketing communications at any time by using the unsubscribe link in emails or by contacting us directly.',
+              'Depending on your location, you may have additional privacy rights under applicable law.',
+            ],
+          },
+          {
+            title: '7. Contact',
+            content: 'For privacy-related questions or requests, please contact aaronegabo@gmail.com.',
+          },
+        ]}
+      />
+    );
+  }
+
+  if (activePage === 'terms') {
+    return (
+      <LegalPage
+        title="Terms and Conditions"
+        intro="These Terms and Conditions govern your use of this portfolio website and its content. By accessing or using the site, you agree to be bound by these terms."
+        onBack={() => setActivePage('home')}
+        sections={[
+          {
+            title: '1. Use of Website',
+            content: 'You may use this website for lawful informational and professional purposes. You agree not to misuse the site, interfere with its operation, or attempt to gain unauthorized access to systems or data.',
+          },
+          {
+            title: '2. Intellectual Property',
+            content: [
+              'All content on this website, including text, graphics, images, code snippets, branding, and design, is owned by Egabo Aaron unless otherwise noted.',
+              'You may not copy, reproduce, distribute, or republish website content without prior written permission.',
+            ],
+          },
+          {
+            title: '3. Project and Service Information',
+            content: 'Descriptions of projects, services, and technical capabilities are provided for informational purposes. They may be updated at any time and do not guarantee specific outcomes, availability, or performance.',
+          },
+          {
+            title: '4. Links to Third-Party Websites',
+            content: 'This website may contain links to third-party platforms such as GitHub, LinkedIn, X, or other external services. These links are provided for convenience, and their terms, privacy practices, and content are outside our control.',
+          },
+          {
+            title: '5. Limitation of Liability',
+            content: 'To the maximum extent permitted by law, Egabo Aaron shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of this website or any linked content.',
+          },
+          {
+            title: '6. Warranties and Disclosures',
+            content: 'The website is provided on an “as is” and “as available” basis. While efforts are made to keep the site accurate and secure, no warranty is made that it will be error-free, uninterrupted, or fully compatible with every device or browser.',
+          },
+          {
+            title: '7. Governing Law',
+            content: 'These terms are governed by the laws of Uganda, without regard to conflict of law principles. Any dispute arising from these terms shall be resolved in a court of competent jurisdiction in Uganda.',
+          },
+          {
+            title: '8. Changes to These Terms',
+            content: 'We may update these Terms and Conditions from time to time. Continued use of the website after changes are posted means you accept the revised terms.',
+          },
+          {
+            title: '9. Contact',
+            content: 'For questions about these terms, please contact aaronegabo@gmail.com.',
+          },
+        ]}
+      />
+    );
+  }
+
   return (
     <div className="relative w-full min-h-screen bg-transparent font-body text-slate-200 selection:bg-emerald-500/30">
       <AbstractBackground />
@@ -1077,56 +1277,16 @@ function App() {
               initial="hidden"
               whileInView="visible"
               viewport={viewport}
-              className="liquid-glass-strong rounded-[2rem] px-8 py-10 mb-12 flex flex-col lg:flex-row items-center justify-between gap-8 border border-emerald-500/20 relative overflow-hidden"
             >
-              {/* Ambient glow */}
-              <div className="absolute -top-16 left-1/4 w-72 h-36 bg-amber-500/10 rounded-full blur-[60px] pointer-events-none" />
-              <div className="absolute -bottom-16 right-1/4 w-72 h-36 bg-emerald-500/10 rounded-full blur-[60px] pointer-events-none" />
-
-              <motion.div variants={staggerItem} className="relative z-10 text-center lg:text-left">
-                <p className="text-[10px] tracking-[0.25em] uppercase text-gradient-emerald-gold font-semibold mb-2">Stay in the Loop</p>
-                <h3 className="text-2xl md:text-3xl font-heading italic leading-tight mb-2">
-                  Get updates on my latest
-                  <span className="text-gradient-emerald-gold"> projects & insights</span>
-                </h3>
-                <p className="text-sm text-white/50 font-light max-w-md">No spam. Just occasional drops on what I'm building, learning, and shipping.</p>
-              </motion.div>
-
-              <motion.div variants={staggerItem} className="relative z-10 w-full lg:w-auto">
-                <form
-                  onSubmit={(e) => { e.preventDefault(); alert('Thanks for subscribing! 🎉'); }}
-                  className="flex flex-col sm:flex-row gap-3 w-full lg:min-w-[420px]"
-                >
-                  <div className="relative flex-1">
-                    <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                      <polyline points="22,6 12,13 2,6" />
-                    </svg>
-                    <input
-                      id="newsletter-email"
-                      type="email"
-                      required
-                      placeholder="your@email.com"
-                      className="w-full pl-11 pr-4 py-4 bg-white/5 border border-white/10 rounded-xl text-sm text-slate-200 placeholder:text-white/30 focus:outline-none focus:border-emerald-500/60 focus:bg-white/8 transition-all duration-300"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="shrink-0 px-7 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-amber-400 text-black font-semibold text-sm hover:from-emerald-400 hover:to-amber-300 transition-all duration-300 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] flex items-center gap-2 justify-center"
-                  >
-                    Subscribe
-                    <ArrowUpRight className="w-4 h-4" />
-                  </button>
-                </form>
-              </motion.div>
+              <BeehiivNewsletter />
             </motion.div>
 
             {/* ── Bottom copyright bar ───────────────────────────────────── */}
             <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30 font-light">
               <div>© {new Date().getFullYear()} Egabo Aaron. All rights reserved.</div>
               <div className="flex gap-8">
-                <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+                <button type="button" onClick={() => setActivePage('privacy')} className="text-left hover:text-white transition-colors">Privacy Policy</button>
+                <button type="button" onClick={() => setActivePage('terms')} className="text-left hover:text-white transition-colors">Terms of Service</button>
               </div>
             </div>
           </div>
