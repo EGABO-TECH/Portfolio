@@ -1,90 +1,84 @@
-# EGABO AARON // DIGITAL PORTFOLIO
-
 <p align="center">
-<<<<<<< HEAD
-  <img src="/assets/egabo-aaron.png" alt="Egabo Aaron" width="100%" />
-=======
-  <img src="/assets/egabo-aaron.png" alt="Egabo Aaron - Portfolio" width="100%" />
->>>>>>> 23bcbd8ffeaf2e372c13995445079c174437470c
+  <img src="/assets/portfolio-banner.png" alt="Egabo Aaron portfolio preview" width="100%" />
 </p>
 
-> **Pragmatic software engineering, offline-first resilience, and editorial minimalism.** This repository houses the source code for my digital portfolio. It is not just a gallery of work; it is a demonstration of my engineering philosophy. The architecture marries cinematic motion with stark, high-contrast layouts and rigid grid systems to present complex systems thinking in an accessible, highly optimized format.
+# Egabo Aaron — Portfolio
 
-## THE ARCHITECTURE
+A cinematic, high-contrast portfolio built to feel less like a résumé and more like a curated statement of craft. This project showcases my work as a software engineer who builds thoughtful digital products for real-world problems — from education and health tech to civic infrastructure and emerging markets.
 
-The portfolio is engineered for performance, precision, and visual depth, utilizing a modern web stack:
+## What this site is
 
-* **Core:** React 19, TypeScript, Vite
-* **Aesthetics & Layout:** Tailwind CSS (rigid grid implementation, high-contrast UI)
-* **Motion & Rendering:** Framer Motion, Three.js / React Three Fiber, WebGL Fluid
-* **Icons:** Lucide React
+This portfolio is designed to communicate three things at once:
 
-## FEATURED SYSTEMS
+- who I am as a builder
+- what kinds of systems I enjoy creating
+- how I think about product, performance, and clarity
 
-The site catalogs my work across software development, systems architecture, and AI integration, highlighting projects built for both cutting-edge web environments and resource-constrained infrastructures. Featured systems include:
+It blends editorial design, motion, and modern web technology to present complex ideas in a way that feels clean, intentional, and memorable.
 
-* **PesaBorder:** The East African Cross-Border Settlement Cleaving Engine leveraging mobile money APIs.
-* **MedSwift & EcoFarm:** Offline-first, resilient software architectures designed for critical infrastructure.
-* **ESMS & Accommodate-Me:** Full-stack operational solutions.
+## What you’ll find here
 
-## DESIGN PHILOSOPHY
+- a bold hero experience with immersive motion
+- featured projects with technical context and links
+- a skills overview that reflects my engineering focus
+- social and contact channels for collaboration or conversation
 
-The visual language of this project is deeply rooted in **editorial minimalism**. 
-Instead of relying on cluttered UI trends, the interface prioritizes:
-1.  **Typography & White Space:** Guiding the user's eye with intent.
-2.  **Structural Integrity:** Strict adherence to grid systems to organize technical case studies.
-3.  **Restrained Motion:** Using WebGL and Framer Motion not for decoration, but to provide spatial context and a premium user experience.
+## Tech stack
 
-## LOCAL DEPLOYMENT
+This site is built with a modern front-end stack:
+
+- React 19 + TypeScript
+- Vite
+- Framer Motion for polished animation
+- Tailwind CSS for layout and visual structure
+- Three.js / React Three Fiber for richer visual experiences
+- WebGL Fluid for the interactive background effect
+- Lucide icons for the interface system
+
+## Project structure
+
+```text
+src/
+├── App.tsx               # Main portfolio layout and view logic
+├── components/           # Hero, skills, social, and content sections
+├── lib/                  # Motion and animation helpers
+├── assets/               # Branding, imagery, and visual resources
+└── utils/                # Fluid and supporting utility logic
+```
+
+## Getting started
 
 ### Prerequisites
-For discussions regarding systems architecture, freelance engineering, or AI integration:
 
-Email: aaronegabo@gmail.com
+- Node.js 18+
+- npm or pnpm
 
-GitHub: EGABO-TECH
+### Install and run locally
 
-LinkedIn: egaboaaron
-
-X: @WanEgabo
-
-© 2026 Egabo Aaron. All rights reserved unless otherwise stated.
-* Node.js 18+
-* npm or pnpm
-
-### Initialization
 ```bash
-# Clone the repository
-git clone [https://github.com/EGABO-TECH/Portfolio-Rework.git](https://github.com/EGABO-TECH/Portfolio-Rework.git)
-
-# Navigate to the workspace
+git clone https://github.com/EGABO-TECH/Portfolio-Rework.git
 cd Portfolio-Rework
-
-# Install dependencies
 npm install
-
-# Spin up the local development server
 npm run dev
 ```
 
-## PRODUCTION BUILD
+Then open the local URL shown in your terminal.
+
+## Build and preview
+
 ```bash
-# Compile and optimize for production
 npm run build
-
-# Preview the production build locally
 npm run preview
-
-# Run Oxlint checks
 npm run lint
 ```
 
-## DIRECTORY TOPOLOGY
-src/
-├── App.tsx             # Root layout and core routing
-├── components/         # Modular UI (Hero, Grids, Navigation)
-├── lib/                # Motion primitives and animation hooks
-├── assets/             # Static assets, branding, and imagery
-└── utils/              # WebGL fluid dynamics and helper functions
+## Contact
 
-## DISPATCH AND CONTACT
+If you want to talk about software, product thinking, systems design, or collaboration, I’d love to hear from you.
+
+- Email: aaronegabo@gmail.com
+- GitHub: EGABO-TECH
+- LinkedIn: egaboaaron
+- X: @WanEgabo
+
+© 2026 Egabo Aaron. All rights reserved unless otherwise stated.
