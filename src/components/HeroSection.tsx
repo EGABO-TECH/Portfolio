@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FluidBackground from './FluidBackground';
 import './HeroSection.css';
@@ -25,20 +25,45 @@ const TwitterIcon = () => (
   </svg>
 );
 
-// ─── Logo SVG ──────────────────────────────────────────────────────────────
+import eaLogo from '../assets/ea-logo.png';
+
+// ─── Logo Image ────────────────────────────────────────────────────────────
 const LogoMark = () => (
-  <svg viewBox="0 0 32 32" fill="none" className="hero-logo-svg" aria-hidden="true">
-    <rect x="5" y="11" width="22" height="10" rx="4" fill="#fff" transform="rotate(-35 16 16)" />
-    <rect x="5" y="11" width="22" height="10" rx="4" fill="#fff" opacity="0.4" transform="rotate(35 16 16)" />
-  </svg>
+  <img 
+    src={eaLogo} 
+    alt="Egabo Aaron Logo" 
+    className="w-8 h-8 rounded-full object-cover border border-white/20 shadow-lg"
+    aria-hidden="true"
+  />
 );
 
 // ─── Cinematic greeting text ────────────────────────────────────────────────
 const GREETING_CHARS = "Hi, I'm Egabo Aaron".split('');
 
+// ─── Nav links data ───────────────────────────────────────────────────────
+const NAV_LINKS = [
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'GitHub', href: '#github' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Content', href: '#content' },
+  { label: 'Contact', href: '#contact' },
+];
+
 // ─── HeroSection ───────────────────────────────────────────────────────────
 const HeroSection = () => {
   const [greetingVisible, setGreetingVisible] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isMobileMenuOpen]);
+
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+  const toggleMobileMenu = () => setIsMobileMenuOpen(prev => !prev);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Reveal greeting when the hand opens (~2.6 s into the video)
@@ -142,32 +167,101 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* CENTER — nav links pill */}
+        {/* CENTER — nav links pill (desktop only) */}
         <div className="hero-nav-center">
           <nav className="hero-links-pill" aria-label="Sections">
-            {[
-              { label: 'Home', href: '#home' },
-              { label: 'About', href: '#about' },
-              { label: 'Projects', href: '#projects' },
-              { label: 'GitHub', href: '#github' },
-              { label: 'Skills', href: '#skills' },
-              { label: 'Content', href: '#content' },
-              { label: 'Contact', href: '#contact' },
-            ].map(({ label, href }) => (
+            {NAV_LINKS.filter(l => l.label !== 'Contact').map(({ label, href }) => (
               <a key={href} href={href} className="hero-nav-link">{label}</a>
             ))}
+            <a href="#contact" className="hero-nav-link hero-nav-cta">Contact</a>
           </nav>
         </div>
 
-        {/* RIGHT — social icons */}
+        {/* RIGHT — social icons (desktop) + hamburger (mobile) */}
         <div className="hero-nav-right">
-          <div className="hero-right-pill">
+          {/* Social icons — hidden on mobile */}
+          <div className="hero-right-pill hero-social-desktop">
             <a href="https://github.com/EGABO-TECH" target="_blank" rel="noreferrer" className="hero-social-icon" aria-label="GitHub"><GithubIcon /></a>
             <a href="https://linkedin.com/in/egaboaaron" target="_blank" rel="noreferrer" className="hero-social-icon" aria-label="LinkedIn"><LinkedinIcon /></a>
             <a href="https://x.com/WanEgabo" target="_blank" rel="noreferrer" className="hero-social-icon" aria-label="X/Twitter"><TwitterIcon /></a>
           </div>
+          {/* Hamburger button — mobile only */}
+          <button
+            className="hero-hamburger"
+            onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMobileMenuOpen}
+          >
+            <span className={`hero-hamburger-bar ${isMobileMenuOpen ? 'bar-open-1' : ''}`} />
+            <span className={`hero-hamburger-bar ${isMobileMenuOpen ? 'bar-open-2' : ''}`} />
+            <span className={`hero-hamburger-bar ${isMobileMenuOpen ? 'bar-open-3' : ''}`} />
+          </button>
         </div>
       </motion.nav>
+
+      {/* ── Mobile Menu Overlay ────────────────────────────────────────── */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className="hero-mobile-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            {/* Slide-in panel */}
+            <motion.div
+              className="hero-mobile-panel"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.35, ease: EASE }}
+            >
+              {/* Menu header */}
+              <div className="hero-mobile-header">
+                <div className="hero-logo-wrap">
+                  <LogoMark />
+                  <span className="hero-brand-name">ea</span>
+                </div>
+                <button className="hero-mobile-close" onClick={closeMobileMenu} aria-label="Close menu">
+                  <span className="hero-hamburger-bar bar-open-1" />
+                  <span className="hero-hamburger-bar bar-open-2" style={{ opacity: 0 }} />
+                  <span className="hero-hamburger-bar bar-open-3" />
+                </button>
+              </div>
+
+              {/* Nav links */}
+              <nav className="hero-mobile-links" aria-label="Mobile navigation">
+                {NAV_LINKS.map(({ label, href }, i) => (
+                  <motion.a
+                    key={href}
+                    href={href}
+                    className={`hero-mobile-link ${label === 'Contact' ? 'hero-mobile-cta' : ''}`}
+                    onClick={closeMobileMenu}
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: 0.1 + i * 0.05, ease: EASE }}
+                  >
+                    {label}
+                  </motion.a>
+                ))}
+              </nav>
+
+              {/* Social icons inside mobile menu */}
+              <motion.div
+                className="hero-mobile-socials"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.5, ease: EASE }}
+              >
+                <a href="https://github.com/EGABO-TECH" target="_blank" rel="noreferrer" className="hero-mobile-social-icon" aria-label="GitHub"><GithubIcon /></a>
+                <a href="https://linkedin.com/in/egaboaaron" target="_blank" rel="noreferrer" className="hero-mobile-social-icon" aria-label="LinkedIn"><LinkedinIcon /></a>
+                <a href="https://x.com/WanEgabo" target="_blank" rel="noreferrer" className="hero-mobile-social-icon" aria-label="X/Twitter"><TwitterIcon /></a>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ── Footer content ───────────────────────────────────────────── */}
       <motion.div
