@@ -6,6 +6,10 @@ import SkillsGrid from './components/SkillsGrid';
 import SocialFeeds from './components/SocialFeeds';
 import HeroSection from './components/HeroSection';
 import egaboPhoto from './assets/EGABO-AARON.jpeg';
+import eaLogo from './assets/ea-logo.png';
+import esmsImage from './assets/esms_dashboard.png';
+import medswiftImage from './assets/medswift_app.png';
+import accommodateMeImage from './assets/accommodate_me.png';
 
 // Abstract Background
 const AbstractBackground = () => (
@@ -37,7 +41,7 @@ const TwitterIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// ─── GitHub Repos Data ────────────────────────────────────────────────────────
+// â”€â”€â”€ GitHub Repos Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 type RepoCategory = 'Popular' | 'Personal' | 'Study' | 'Fork' | 'Not Started';
 interface Repo {
   name: string;
@@ -52,7 +56,7 @@ interface Repo {
 }
 
 const REPOS: Repo[] = [
-  // ── Popular
+  // â”€â”€ Popular
   {
     name: 'ESMS',
     description: 'Scalable, multi-tenant University Management System with RBAC, automated academic workflows, and UGX-integrated financial services for Uganda.',
@@ -75,7 +79,7 @@ const REPOS: Repo[] = [
   },
   {
     name: 'ExFlo',
-    description: 'Agentic AI tourism ecosystem — autonomously plans, books, and coordinates travel. Integrates MiniPay blockchain payments and an AI Pilot for emerging markets.',
+    description: 'Agentic AI tourism ecosystem â€” autonomously plans, books, and coordinates travel. Integrates MiniPay blockchain payments and an AI Pilot for emerging markets.',
     language: 'TypeScript',
     stars: 2,
     url: 'https://github.com/EGABO-TECH/ExFlo',
@@ -85,7 +89,7 @@ const REPOS: Repo[] = [
   },
   {
     name: 'KUA',
-    description: 'Command center for hyper-efficient social marketing. Generate pixel-perfect flyers and broadcast across platforms instantly — no heavy frameworks.',
+    description: 'Command center for hyper-efficient social marketing. Generate pixel-perfect flyers and broadcast across platforms instantly â€” no heavy frameworks.',
     language: 'HTML',
     stars: 0,
     url: 'https://github.com/EGABO-TECH/KUA',
@@ -95,7 +99,7 @@ const REPOS: Repo[] = [
   },
   {
     name: 'RITAH-STYLES',
-    description: 'Digital presence website for Ritah Styles — a fashion & beauty brand. Clean, modern brand site with full Vercel deployment.',
+    description: 'Digital presence website for Ritah Styles â€” a fashion & beauty brand. Clean, modern brand site with full Vercel deployment.',
     language: 'HTML',
     stars: 0,
     url: 'https://github.com/EGABO-TECH/RITAH-STYLES',
@@ -103,7 +107,7 @@ const REPOS: Repo[] = [
     tags: ['HTML', 'CSS', 'Client Work', 'Fashion'],
     category: 'Popular',
   },
-  // ── Personal
+  // â”€â”€ Personal
   {
     name: 'ACCOMMODATE-ME',
     description: 'Centralized housing platform connecting university students with verified, secure landlords in Uganda.',
@@ -124,7 +128,7 @@ const REPOS: Repo[] = [
   },
   {
     name: 'AMA-TUALU-FOUNDATION',
-    description: 'Official digital infrastructure for the Ama-Tualu Foundation — empowering youth in West Nile, Uganda through digital literacy & mentorship.',
+    description: 'Official digital infrastructure for the Ama-Tualu Foundation â€” empowering youth in West Nile, Uganda through digital literacy & mentorship.',
     language: 'HTML',
     stars: 0,
     url: 'https://github.com/EGABO-TECH/AMA-TUALU-FOUNDATION',
@@ -133,7 +137,7 @@ const REPOS: Repo[] = [
   },
   {
     name: 'EGABO-TECH (Profile)',
-    description: 'GitHub profile README — "All about me." Personal developer brand and identity on GitHub.',
+    description: 'GitHub profile README â€” "All about me." Personal developer brand and identity on GitHub.',
     stars: 0,
     url: 'https://github.com/EGABO-TECH/EGABO-TECH',
     tags: ['Markdown', 'GitHub Profile'],
@@ -141,7 +145,7 @@ const REPOS: Repo[] = [
   },
   {
     name: 'odin-recipes',
-    description: 'Final project for The Odin Project — HTML basics summarized in a recipe website. First steps into web development.',
+    description: 'Final project for The Odin Project â€” HTML basics summarized in a recipe website. First steps into web development.',
     language: 'HTML',
     stars: 0,
     url: 'https://github.com/EGABO-TECH/odin-recipes',
@@ -149,7 +153,7 @@ const REPOS: Repo[] = [
     tags: ['HTML', 'The Odin Project', 'Beginner'],
     category: 'Personal',
   },
-  // ── Study
+  // â”€â”€ Study
   {
     name: 'RUST-COHORT-2',
     description: 'Personal learning journal tracking Rust progress from absolute zero to systems proficiency. Active tracker for ongoing cohort.',
@@ -161,7 +165,7 @@ const REPOS: Repo[] = [
   },
   {
     name: 'BD-WEEK1',
-    description: 'Week 1 assignment for Backend Development — BeTechified Africa Cohort. Node.js fundamentals and server architecture.',
+    description: 'Week 1 assignment for Backend Development â€” BeTechified Africa Cohort. Node.js fundamentals and server architecture.',
     language: 'JavaScript',
     stars: 0,
     url: 'https://github.com/EGABO-TECH/BD-WEEK1',
@@ -170,7 +174,7 @@ const REPOS: Repo[] = [
   },
   {
     name: 'BD-WEEK2',
-    description: 'Week 2 assignment for Backend Development — BeTechified Africa Cohort. REST APIs and database integration.',
+    description: 'Week 2 assignment for Backend Development â€” BeTechified Africa Cohort. REST APIs and database integration.',
     language: 'JavaScript',
     stars: 0,
     url: 'https://github.com/EGABO-TECH/BD-WEEK2',
@@ -179,7 +183,7 @@ const REPOS: Repo[] = [
   },
   {
     name: 'Simple-C-Calculator',
-    description: 'First C project — a basic arithmetic calculator to practice control flow, switch statements, and user input handling in C.',
+    description: 'First C project â€” a basic arithmetic calculator to practice control flow, switch statements, and user input handling in C.',
     language: 'C',
     stars: 0,
     url: 'https://github.com/EGABO-TECH/Simple-C-Calculator',
@@ -195,7 +199,7 @@ const REPOS: Repo[] = [
     tags: ['C', 'Algorithms', 'Payroll'],
     category: 'Study',
   },
-  // ── Forks
+  // â”€â”€ Forks
   {
     name: 'system-design-101',
     description: 'Explains complex systems using visuals and simple terms. Essential reference for system design interviews.',
@@ -206,7 +210,7 @@ const REPOS: Repo[] = [
   },
   {
     name: 'gstack',
-    description: "Garry Tan's exact Claude Code setup — 23 opinionated tools serving as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA.",
+    description: "Garry Tan's exact Claude Code setup â€” 23 opinionated tools serving as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA.",
     url: 'https://github.com/EGABO-TECH/gstack',
     tags: ['AI Engineering', 'Dev Workflow', 'Claude'],
     category: 'Fork',
@@ -233,7 +237,7 @@ const REPOS: Repo[] = [
   },
   {
     name: 'odoo',
-    description: 'Odoo — Open Source Apps To Grow Your Business. Full ERP platform forked for business automation study.',
+    description: 'Odoo â€” Open Source Apps To Grow Your Business. Full ERP platform forked for business automation study.',
     url: 'https://github.com/EGABO-TECH/odoo',
     deployment: 'https://www.odoo.com',
     tags: ['ERP', 'Python', 'Business', 'Open Source'],
@@ -258,7 +262,7 @@ const REPOS: Repo[] = [
   },
   {
     name: 'OpenCluely',
-    description: 'Free, open source Cluely alternative for technical interviews — DSA, OAs, CP. Invisible overlay with real-time AI help.',
+    description: 'Free, open source Cluely alternative for technical interviews â€” DSA, OAs, CP. Invisible overlay with real-time AI help.',
     url: 'https://github.com/EGABO-TECH/OpenCluely',
     tags: ['Interviews', 'AI', 'Open Source'],
     category: 'Fork',
@@ -272,10 +276,10 @@ const REPOS: Repo[] = [
     category: 'Fork',
     isFork: true,
   },
-  // ── Not Started
+  // â”€â”€ Not Started
   {
     name: 'RENOA',
-    description: 'Startup venture — RENOA. Co-Founder & Technical Lead. Full platform coming soon.',
+    description: 'Startup venture â€” RENOA. Co-Founder & Technical Lead. Full platform coming soon.',
     stars: 0,
     url: 'https://github.com/EGABO-TECH/RENOA',
     tags: ['Startup', 'In Progress', 'Coming Soon'],
@@ -283,7 +287,7 @@ const REPOS: Repo[] = [
   },
   {
     name: 'MAMA-IANS-SHOP',
-    description: 'Local e-commerce / shop website — initialized but work not yet begun.',
+    description: 'Local e-commerce / shop website â€” initialized but work not yet begun.',
     stars: 0,
     url: 'https://github.com/EGABO-TECH/MAMA-IANS-SHOP',
     tags: ['E-Commerce', 'Local Business', 'Coming Soon'],
@@ -307,7 +311,7 @@ const LANG_COLORS: Record<string, string> = {
   C: '#555555',
 };
 
-// ─── GitHub Section Component ─────────────────────────────────────────────────
+// â”€â”€â”€ GitHub Section Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const GitHubSection = () => {
   const [activeTab, setActiveTab] = useState<RepoCategory>('Popular');
   const ref = useRef(null);
@@ -320,7 +324,7 @@ const GitHubSection = () => {
   }, {} as Record<RepoCategory, number>);
 
   return (
-    <section id="github" className="relative z-10 py-32 px-8 md:px-16 lg:px-24">
+    <section id="github" className="relative z-10 py-32 px-4 sm:px-8 md:px-16 lg:px-24">
       <div className="max-w-7xl mx-auto" ref={ref}>
         {/* Header */}
         <motion.div
@@ -345,29 +349,7 @@ const GitHubSection = () => {
           </div>
         </motion.div>
 
-        {/* Stats Row */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="flex flex-wrap gap-3 mb-10"
-        >
-          {(Object.keys(CATEGORY_CONFIG) as RepoCategory[]).map(cat => {
-            const cfg = CATEGORY_CONFIG[cat];
-            return (
-              <div key={cat} className={`liquid-glass rounded-full px-4 py-2 flex items-center gap-2 text-xs border ${cfg.accent}`}>
-                <span className={cfg.color}>{cfg.icon}</span>
-                <span className="text-white/60">{cfg.label}</span>
-                <span className={`font-semibold ${cfg.color}`}>{counts[cat]}</span>
-              </div>
-            );
-          })}
-          <div className="liquid-glass rounded-full px-4 py-2 flex items-center gap-2 text-xs border border-white/10">
-            <Star className="w-3.5 h-3.5 text-yellow-400" />
-            <span className="text-white/60">Starred</span>
-            <span className="font-semibold text-yellow-400">38</span>
-          </div>
-        </motion.div>
+
 
         {/* Filter Tabs */}
         <motion.div
@@ -521,11 +503,11 @@ function App() {
     <div className="relative w-full min-h-screen bg-black font-body text-white selection:bg-blue-500/30">
       <AbstractBackground />
 
-      {/* ── New Hero Section (includes its own self-contained navbar) ── */}
+      {/* â”€â”€ New Hero Section (includes its own self-contained navbar) â”€â”€ */}
       <HeroSection />
 
       {/* About Section */}
-      <section id="about" className="relative z-10 py-32 px-8 md:px-16 lg:px-24">
+      <section id="about" className="relative z-10 py-32 px-4 sm:px-8 md:px-16 lg:px-24">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -537,14 +519,14 @@ function App() {
             <div className="aspect-[4/5] rounded-[2rem] overflow-hidden liquid-glass-strong p-2">
               <img src={egaboPhoto} alt="Egabo Aaron" className="w-full h-full object-cover rounded-[1.5rem]" />
             </div>
-            <div className="absolute -bottom-6 -right-6 liquid-glass p-6 rounded-[1.5rem] w-48">
-              <div className="text-3xl font-heading italic">RENOA</div>
-              <div className="text-xs text-white/70 mt-1">Co-Founder & Technical Project Manager</div>
+            <div className="absolute -bottom-4 -right-2 sm:-right-4 md:-bottom-8 md:-right-8 liquid-glass p-5 md:p-6 rounded-[1.5rem] min-w-[15rem] md:min-w-[17rem] shadow-2xl border border-white/10 backdrop-blur-md">
+              <div className="text-3xl font-heading italic tracking-wide">RENOA</div>
+              <div className="text-xs text-white/80 mt-1.5 font-medium leading-relaxed">Co-Founder & Technical Project Manager</div>
             </div>
           </motion.div>
 
           <div className="w-full md:w-2/3">
-            <div className="text-sm font-body text-blue-400 mb-4">// MY MISSION</div>
+            <div className="text-sm font-body text-blue-400 mb-4">// ABOUT ME</div>
             <h2 className="text-4xl md:text-5xl font-heading italic leading-tight tracking-[-1px] mb-8">
               "Tech, Innovation and Curiosity all curated in my pragmatic mind."
             </h2>
@@ -561,10 +543,10 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="relative z-10 py-32 px-8 md:px-16 lg:px-24 bg-black/50">
+      <section id="projects" className="relative z-10 py-32 px-4 sm:px-8 md:px-16 lg:px-24 bg-black/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-sm font-body text-blue-400 mb-4">// FLAGSHIP PROJECTS</div>
-          <h2 className="text-5xl md:text-6xl font-heading italic leading-tight tracking-[-2px] mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading italic leading-tight tracking-[-2px] mb-16">
             Engineering for Impact
           </h2>
 
@@ -578,7 +560,7 @@ function App() {
               className="flex flex-col lg:flex-row gap-12 items-center"
             >
               <div className="w-full lg:w-1/2 order-2 lg:order-1">
-                <div className="liquid-glass rounded-full inline-flex px-4 py-1.5 text-xs font-medium mb-6">EdTech • Enterprise System</div>
+                <div className="liquid-glass rounded-full inline-flex px-4 py-1.5 text-xs font-medium mb-6">EdTech â€¢ Enterprise System</div>
                 <h3 className="text-4xl font-heading italic mb-4">ESMS</h3>
                 <p className="text-white/70 font-light leading-relaxed mb-6">
                   The definitive digital infrastructure for modern higher education in Uganda. A 4-layer decoupled architecture featuring multi-tenant RBAC, NCHE regulatory compliance, and native Ugandan Shilling financial workflows with local bank APIs (MTN MoMo, Airtel Money).
@@ -591,14 +573,11 @@ function App() {
                 <a href="https://esms-beta.vercel.app" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium hover:text-blue-400 transition-colors">
                   View Live Platform <ArrowUpRight className="w-4 h-4" />
                 </a>
-                <a href="https://github.com/EGABO-TECH/ESMS" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium text-white/50 hover:text-white/80 transition-colors ml-6">
-                  Source <GithubIcon className="w-4 h-4" />
-                </a>
               </div>
               <div className="w-full lg:w-1/2 order-1 lg:order-2">
-                <div className="aspect-[16/10] liquid-glass-strong rounded-[2rem] p-4 flex items-center justify-center relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <h4 className="text-5xl font-heading italic text-white/20 select-none">ESMS Architecture</h4>
+                <div className="aspect-[16/10] liquid-glass-strong rounded-[2rem] p-2 relative overflow-hidden group">
+                  <img src={esmsImage} alt="ESMS Dashboard" className="w-full h-full object-cover rounded-[1.5rem] transition-all duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[1.5rem]"></div>
                 </div>
               </div>
             </motion.div>
@@ -612,16 +591,16 @@ function App() {
               className="flex flex-col lg:flex-row gap-12 items-center"
             >
               <div className="w-full lg:w-1/2">
-                <div className="aspect-[16/10] liquid-glass-strong rounded-[2rem] p-4 flex items-center justify-center relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-emerald-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <h4 className="text-5xl font-heading italic text-white/20 select-none">MedSwift Vision</h4>
+                <div className="aspect-[16/10] liquid-glass-strong rounded-[2rem] p-2 relative overflow-hidden group">
+                  <img src={medswiftImage} alt="MedSwift App" className="w-full h-full object-cover rounded-[1.5rem] transition-all duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[1.5rem]"></div>
                 </div>
               </div>
               <div className="w-full lg:w-1/2">
-                <div className="liquid-glass rounded-full inline-flex px-4 py-1.5 text-xs font-medium mb-6">HealthTech • Multimodal AI PWA</div>
+                <div className="liquid-glass rounded-full inline-flex px-4 py-1.5 text-xs font-medium mb-6">HealthTech â€¢ Multimodal AI PWA</div>
                 <h3 className="text-4xl font-heading italic mb-4">MedSwift</h3>
                 <p className="text-white/70 font-light leading-relaxed mb-6">
-                  Pharmaceutical intelligence engine turning a mobile camera into a medical auditing tool. Features a triple-tier AI resilience pipeline (Gemini 2.0 Flash → Gemini 1.5 Pro → Claude fallback) and an offline-first PWA architecture for low-connectivity environments.
+                  Pharmaceutical intelligence engine turning a mobile camera into a medical auditing tool. Features a triple-tier AI resilience pipeline (Gemini 2.0 Flash â†’ Gemini 1.5 Pro â†’ Claude fallback) and an offline-first PWA architecture for low-connectivity environments.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-8">
                   {['Vanilla JS', 'PWA', 'Gemini AI', 'OCR.space'].map(tech => (
@@ -631,13 +610,10 @@ function App() {
                 <a href="https://med-swift-six.vercel.app" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium hover:text-emerald-400 transition-colors">
                   View Live App <ArrowUpRight className="w-4 h-4" />
                 </a>
-                <a href="https://github.com/EGABO-TECH/MedSwift" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium text-white/50 hover:text-white/80 transition-colors ml-6">
-                  Source <GithubIcon className="w-4 h-4" />
-                </a>
               </div>
             </motion.div>
 
-            {/* ExFlo */}
+            {/* Accommodate Me */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -646,24 +622,24 @@ function App() {
               className="flex flex-col lg:flex-row gap-12 items-center"
             >
               <div className="w-full lg:w-1/2 order-2 lg:order-1">
-                <div className="liquid-glass rounded-full inline-flex px-4 py-1.5 text-xs font-medium mb-6">TravelTech • Agentic AI</div>
-                <h3 className="text-4xl font-heading italic mb-4">ExFlo</h3>
+                <div className="liquid-glass rounded-full inline-flex px-4 py-1.5 text-xs font-medium mb-6">Civic Tech â€¢ Real Estate</div>
+                <h3 className="text-4xl font-heading italic mb-4">Accommodate-Me</h3>
                 <p className="text-white/70 font-light leading-relaxed mb-6">
-                  A revolutionary autonomous orchestration layer for the global tourism industry. Replaces static search with an AI Pilot that plans, books, and coordinates journeys with real-time monitoring and native blockchain/cryptocurrency payments.
+                  Centralized housing platform connecting university students with verified, secure landlords in Uganda. Built to ensure safety, transparency, and seamless digital booking.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-8">
-                  {['Vite', 'LangChain', 'MiniPay', 'Blockchain'].map(tech => (
+                  {['Full-Stack', 'PostgreSQL', 'Web'].map(tech => (
                     <span key={tech} className="liquid-glass px-3 py-1 rounded-full text-xs">{tech}</span>
                   ))}
                 </div>
-                <a href="https://github.com/EGABO-TECH/ExFlo" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium hover:text-purple-400 transition-colors">
-                  View Source <GithubIcon className="w-4 h-4" />
+                <a href="#" onClick={(e) => { e.preventDefault(); alert('Deployment link coming soon!'); }} className="inline-flex items-center gap-2 text-sm font-medium hover:text-purple-400 transition-colors">
+                  View Live Website <ArrowUpRight className="w-4 h-4" />
                 </a>
               </div>
               <div className="w-full lg:w-1/2 order-1 lg:order-2">
-                <div className="aspect-[16/10] liquid-glass-strong rounded-[2rem] p-4 flex items-center justify-center relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-gradient-to-bl from-purple-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <h4 className="text-5xl font-heading italic text-white/20 select-none">ExFlo Orchestration</h4>
+                <div className="aspect-[16/10] liquid-glass-strong rounded-[2rem] p-2 relative overflow-hidden group">
+                  <img src={accommodateMeImage} alt="Accommodate Me Platform" className="w-full h-full object-cover rounded-[1.5rem] transition-all duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-bl from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[1.5rem]"></div>
                 </div>
               </div>
             </motion.div>
@@ -676,7 +652,7 @@ function App() {
 
               {/* KUA */}
               <motion.a
-                href="https://github.com/EGABO-TECH/KUA"
+                href="https://egabo-tech.github.io/KUA/"
                 target="_blank"
                 rel="noreferrer"
                 initial={{ opacity: 0, y: 20 }}
@@ -700,9 +676,9 @@ function App() {
                 </div>
               </motion.a>
 
-              {/* ACCOMMODATE-ME */}
+              {/* RITAH-STYLES (Replaces Accommodate Me) */}
               <motion.a
-                href="https://github.com/EGABO-TECH/ACCOMMODATE-ME"
+                href="https://ritah-styles-ug.vercel.app"
                 target="_blank"
                 rel="noreferrer"
                 initial={{ opacity: 0, y: 20 }}
@@ -712,15 +688,15 @@ function App() {
                 className="liquid-glass rounded-[1.5rem] p-6 flex flex-col group hover:bg-white/5 transition-colors cursor-pointer"
               >
                 <div className="flex justify-between items-start mb-4">
-                  <div className="liquid-glass rounded-full px-3 py-1 text-[10px] font-medium uppercase tracking-wider">Civic Tech</div>
+                  <div className="liquid-glass rounded-full px-3 py-1 text-[10px] font-medium uppercase tracking-wider">Client Work</div>
                   <ArrowUpRight className="w-5 h-5 text-white/50 group-hover:text-white transition-colors" />
                 </div>
-                <h4 className="text-2xl font-heading italic mb-2">Accommodate-Me</h4>
+                <h4 className="text-2xl font-heading italic mb-2">RITAH-STYLES</h4>
                 <p className="text-sm text-white/60 font-light leading-relaxed mb-6 flex-1">
-                  Centralized housing platform connecting university students with verified, secure landlords in Uganda.
+                  Digital presence website for Ritah Styles â€” a fashion & beauty brand. Clean, modern brand site with full Vercel deployment.
                 </p>
                 <div className="flex flex-wrap gap-2 mt-auto">
-                  {['Full-Stack', 'PostgreSQL', 'Web'].map(tech => (
+                  {['HTML', 'CSS', 'Fashion'].map(tech => (
                     <span key={tech} className="bg-white/5 border border-white/10 px-2 py-0.5 rounded text-[10px] text-white/70">{tech}</span>
                   ))}
                 </div>
@@ -728,9 +704,8 @@ function App() {
 
               {/* Resume Builder */}
               <motion.a
-                href="https://github.com/EGABO-TECH/Resume-Builder"
-                target="_blank"
-                rel="noreferrer"
+                href="#"
+                onClick={(e) => { e.preventDefault(); alert('Deployment link coming soon!'); }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -754,9 +729,8 @@ function App() {
 
               {/* AMA-TUALU FOUNDATION */}
               <motion.a
-                href="https://github.com/EGABO-TECH/AMA-TUALU-FOUNDATION"
-                target="_blank"
-                rel="noreferrer"
+                href="#"
+                onClick={(e) => { e.preventDefault(); alert('Deployment link coming soon!'); }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -780,9 +754,8 @@ function App() {
 
               {/* Simple C Calculator */}
               <motion.a
-                href="https://github.com/EGABO-TECH/Simple-C-Calculator"
-                target="_blank"
-                rel="noreferrer"
+                href="#"
+                onClick={(e) => { e.preventDefault(); alert('Deployment link coming soon!'); }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -806,9 +779,8 @@ function App() {
 
               {/* RUST COHORT */}
               <motion.a
-                href="https://github.com/EGABO-TECH/RUST-COHORT-2"
-                target="_blank"
-                rel="noreferrer"
+                href="#"
+                onClick={(e) => { e.preventDefault(); alert('Deployment link coming soon!'); }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -844,47 +816,214 @@ function App() {
       {/* Social Feeds Section */}
       <SocialFeeds />
 
-      {/* Footer / Newsletter */}
-      <section id="contact" className="relative z-10 py-24 px-8 md:px-16 lg:px-24 border-t border-white/10">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-16">
-          <div className="w-full md:w-1/2">
-            <h2 className="text-4xl font-heading italic mb-4">The Intellectual Curiosities</h2>
-            <p className="text-white/60 text-sm mb-8 max-w-md">
-              Join my newsletter to receive curated thoughts on software engineering, philosophy, history, and how they intersect to build better products for Africa.
-            </p>
-            <form className="flex gap-2 max-w-md" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="email@example.com"
-                className="flex-1 bg-white/5 border border-white/10 rounded-full px-6 py-3 text-sm focus:outline-none focus:border-white/30 transition-colors"
-                required
-              />
-              <button type="submit" className="liquid-glass-strong rounded-full px-6 py-3 text-sm font-medium hover:bg-white/10 transition-colors">
-                Subscribe
-              </button>
-            </form>
-          </div>
+      {/* Reviews / Testimonials Section */}
+      {(() => {
+        const track1 = [
+          { name: 'Muawia Mohammad', role: 'Founder, EdTech Startup Â· Kampala', avatar: 'MM', color: 'from-blue-500/20 to-cyan-500/20', border: 'border-blue-500/20', quote: "Aaron delivered our student management system months ahead of schedule. The architecture he proposed ”multi-tenant with role-based access” was something our previous team couldn't crack in a year. He genuinely understands enterprise software." },
+          { name: 'Guzu Prisca Nancy', role: 'Project Manager, HealthTech NGO', avatar: 'GPN', color: 'from-emerald-500/20 to-teal-500/20', border: 'border-emerald-500/20', quote: 'MedSwift was a game-changer for our pharmacy audit process. Aaron integrated offline-first capabilities so our field teams could still scan drugs even without internet. The AI fallback pipeline was genius” it never failed us.' },
+          { name: 'Niwasiima Ashelycole', role: 'CTO, Startup, Co-Founder at RENOA· Uganda', avatar: 'NA', color: 'from-purple-500/20 to-violet-500/20', border: 'border-purple-500/20', quote: "Working with Aaron on Accommodate-Me was seamless. He doesn't just write code” he thinks through the product. His suggestion to implement verified landlord onboarding before launch prevented a serious trust problem. Sharp product instinct." },
+          { name: 'Kabajungu Ritah', role: 'Business Owner, Fashion & Beauty Brand', avatar: 'KR', color: 'from-pink-500/20 to-rose-500/20', border: 'border-pink-500/20', quote: "He built my website from scratch in under a week. It looks more professional than anything I've seen from boutique agencies. My clients constantly ask who designed it. I send them straight to him." },
 
-          <div className="w-full md:w-1/2 flex flex-col md:items-end text-left md:text-right">
-            <div className="text-2xl font-heading italic mb-6">Let's Build Something</div>
-            <a href="mailto:aaronegabo@gmail.com" className="text-lg text-white/80 hover:text-white mb-8 inline-block transition-colors border-b border-transparent hover:border-white">
-              aaronegabo@gmail.com
-            </a>
-            <div className="flex gap-6">
-              <a href="https://github.com/EGABO-TECH" target="_blank" rel="noreferrer" className="text-white/60 hover:text-white transition-colors flex items-center gap-2 text-sm">
-                <GithubIcon className="w-4 h-4" /> GitHub
-              </a>
-              <a href="https://linkedin.com/in/egaboaaron" target="_blank" rel="noreferrer" className="text-white/60 hover:text-white transition-colors flex items-center gap-2 text-sm">
-                <LinkedinIcon className="w-4 h-4" /> LinkedIn
-              </a>
-              <a href="https://x.com/WanEgabo" target="_blank" rel="noreferrer" className="text-white/60 hover:text-white transition-colors flex items-center gap-2 text-sm">
-                <TwitterIcon className="w-4 h-4" /> X (Twitter)
-              </a>
+          { name: 'Prof. Alone Kimwise', role: 'Dean of FST, Cavendish University Uganda', avatar: 'AK', color: 'from-cyan-500/20 to-blue-500/20', border: 'border-cyan-500/20', quote: 'Aaron represents the calibre of engineering talent Uganda is producing. His ESMS project addressed a genuine gap in how we manage institutional data. The NCHE compliance layer alone showed a depth of domain research that impressed the entire faculty.' },
+        ];
+        const track2 = [
+          { name: 'Acen Lydia', role: 'Product Designer, Tech Startup', avatar: 'AL', color: 'from-violet-500/20 to-purple-500/20', border: 'border-violet-500/20', quote: 'Aaron is one of the rare engineers who genuinely cares about the design layer. He pushed back on my wireframes twice” and both times he was right. His frontend instinct is as sharp as his backend work.' },
+          { name: 'Nakato Faith', role: 'Co-Founder, E-commerce Platform', avatar: 'NF', color: 'from-rose-500/20 to-pink-500/20', border: 'border-rose-500/20', quote: "The platform Aaron built handled our Black Friday peak traffic without a single downtime incident. He had recommended a caching strategy I didn't understand at first, but it saved us on the day. He thinks months ahead." },
+          { name: 'Wasswa Daniel', role: 'Senior Engineer, Software Consultancy', avatar: 'WD', color: 'from-amber-500/20 to-yellow-500/20', border: 'border-amber-500/20', quote: "I have reviewed Aaron's code as part of our open-source contribution reviews. His commit messages, documentation, and code structure are production-grade. He writes code like someone who knows it will be maintained for years." },
+          { name: 'Ababiku Brenda', role: 'Director, Founder of Ama Tualu Foundation· West Nile', avatar: 'AB', color: 'from-blue-500/20 to-indigo-500/20', border: 'border-indigo-500/20', quote: "Aaron volunteered his time to build our foundation's digital platform. What impressed me most was how he translated our community vision into something technically executable without losing the soul of what we were trying to do." },
+          { name: 'Dr. Muhammad Kudu Muhammad', role: 'University Lecturer, CS Department', avatar: 'MKM', color: 'from-cyan-500/20 to-sky-500/20', border: 'border-cyan-500/20', quote: 'Aaron consistently goes beyond coursework. In my Advanced Databases module, his final project schema was the most normalised and well-indexed submission I have seen in five years of teaching. He is self-taught beyond the curriculum.' },
+        ];
+
+        const StarIcon = () => (
+          <svg className="w-4 h-4 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        );
+
+        const ReviewCard = ({ r }: { r: typeof track1[0] }) => (
+          <div className={`shrink-0 w-[380px] liquid-glass rounded-[1.5rem] p-7 border ${r.border} bg-gradient-to-br ${r.color} flex flex-col gap-5`}>
+            <div className="flex gap-1">{[0, 1, 2, 3, 4].map(i => <StarIcon key={i} />)}</div>
+            <p className="text-sm text-white/75 font-light leading-relaxed flex-1">"{r.quote}"</p>
+            <div className="flex items-center gap-3 pt-2 border-t border-white/5">
+              <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${r.color} border ${r.border} flex items-center justify-center text-xs font-semibold text-white shrink-0`}>{r.avatar}</div>
+              <div>
+                <div className="text-sm font-medium text-white">{r.name}</div>
+                <div className="text-[11px] text-white/40 font-light">{r.role}</div>
+              </div>
             </div>
           </div>
+        );
+
+        return (
+          <section id="reviews" className="relative z-10 py-32 overflow-hidden border-t border-white/5">
+            <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 lg:px-24 mb-16">
+              <div className="text-sm font-body text-blue-400 mb-4">// CLIENT REVIEWS</div>
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading italic leading-tight tracking-[-2px]">What They Say</h2>
+                <p className="text-white/50 text-sm max-w-xs leading-relaxed font-light">Trusted by founders, engineers and institutions across Uganda and beyond.</p>
+              </div>
+            </div>
+
+            {/* Track 1 â€” left scroll */}
+            <div className="relative flex gap-6 mb-6 overflow-hidden" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
+              <div className="flex gap-6 animate-[marquee_40s_linear_infinite] shrink-0">
+                {track1.map(r => <ReviewCard key={r.name} r={r} />)}
+              </div>
+              <div className="flex gap-6 animate-[marquee_40s_linear_infinite] shrink-0" aria-hidden>
+                {track1.map(r => <ReviewCard key={r.name + '-dup'} r={r} />)}
+              </div>
+            </div>
+
+            {/* Track 2 â€” right scroll */}
+            <div className="relative flex gap-6 overflow-hidden" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
+              <div className="flex gap-6 animate-[marquee-reverse_55s_linear_infinite] shrink-0">
+                {track2.map(r => <ReviewCard key={r.name} r={r} />)}
+              </div>
+              <div className="flex gap-6 animate-[marquee-reverse_55s_linear_infinite] shrink-0" aria-hidden>
+                {track2.map(r => <ReviewCard key={r.name + '-dup'} r={r} />)}
+              </div>
+            </div>
+          </section>
+        );
+      })()}
+
+      <section id="contact" className="relative z-10 pt-32 px-4 md:px-8 border-t border-white/10 bg-black/40">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="text-[10px] tracking-[0.2em] uppercase font-medium text-white/50 mb-6">Let's Build Together</div>
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading mb-2">Start Your</h2>
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-heading italic text-purple-400 mb-8">Project</h2>
+          <p className="text-white/60 text-sm max-w-md mx-auto leading-relaxed">
+            Whether you have a clear vision or just a feeling, let's have a conversation. I'll help you bring your software product to life.
+          </p>
         </div>
-        <div className="mt-24 text-center text-xs text-white/30">
-          © {new Date().getFullYear()} Egabo Aaron. All rights reserved.
+
+        <div className="max-w-2xl mx-auto mb-32">
+          <form className="flex flex-col gap-8" onSubmit={(e) => e.preventDefault()}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="flex flex-col gap-3">
+                <label className="text-[10px] tracking-[0.15em] uppercase text-white/60 font-medium">First Name</label>
+                <input type="text" placeholder="Your first name" className="bg-transparent border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:outline-none focus:border-purple-500 transition-colors text-white placeholder:text-white/20" />
+              </div>
+              <div className="flex flex-col gap-3">
+                <label className="text-[10px] tracking-[0.15em] uppercase text-white/60 font-medium">Last Name</label>
+                <input type="text" placeholder="Your last name" className="bg-transparent border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:outline-none focus:border-purple-500 transition-colors text-white placeholder:text-white/20" />
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <label className="text-[10px] tracking-[0.15em] uppercase text-white/60 font-medium">Email Address</label>
+              <input type="email" placeholder="your@email.com" className="bg-transparent border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:outline-none focus:border-purple-500 transition-colors text-white placeholder:text-white/20" />
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <label className="text-[10px] tracking-[0.15em] uppercase text-white/60 font-medium">I'm Interested In</label>
+              <div className="relative">
+                <select className="w-full bg-transparent border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:outline-none focus:border-purple-500 transition-colors text-white/80 appearance-none">
+                  <option className="bg-[#0a0014]">Select a service</option>
+                  <option className="bg-[#0a0014]">Full-Stack Web Development</option>
+                  <option className="bg-[#0a0014]">Systems Architecture</option>
+                  <option className="bg-[#0a0014]">Agentic AI Integration</option>
+                  <option className="bg-[#0a0014]">Technical Consultation</option>
+                </select>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-white/40">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <label className="text-[10px] tracking-[0.15em] uppercase text-white/60 font-medium">Tell Me About Your Vision</label>
+              <textarea rows={5} placeholder="Describe the project, stack, or problem you want to solve..." className="bg-transparent border border-white/10 rounded-lg px-4 py-3.5 text-sm focus:outline-none focus:border-purple-500 transition-colors text-white placeholder:text-white/20 resize-none"></textarea>
+            </div>
+
+            <div className="flex flex-col items-center mt-4">
+              <button type="submit" className="liquid-glass rounded-full px-10 py-4 text-[10px] tracking-[0.2em] font-medium uppercase hover:bg-white/10 transition-all duration-300 flex items-center gap-2 mb-6 w-full md:w-auto justify-center border border-white/10 hover:border-purple-500/50 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] text-white/80 hover:text-white">
+                Send My Request <ArrowUpRight className="w-4 h-4" />
+              </button>
+              <span className="text-xs text-white/40 font-light">I'll reply within 24 hours to schedule a discovery call.</span>
+            </div>
+          </form>
+        </div>
+
+        {/* Footer Bottom Area */}
+        <div className="w-full bg-[#05000a]/80 border-t border-white/5 py-20 px-4 sm:px-8 md:px-16 lg:px-24 rounded-t-[3rem] backdrop-blur-md">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+              <div className="col-span-1 md:col-span-4 lg:col-span-4">
+                <div className="flex items-center gap-3 mb-6">
+                  <img src={eaLogo} alt="Egabo Aaron Logo" className="w-10 h-10 rounded-xl object-cover border border-white/10 shadow-lg" />
+                  <h3 className="text-2xl font-heading italic text-white">Egabo Aaron</h3>
+                </div>
+                <p className="text-sm text-white/50 leading-relaxed mb-8 pr-4">
+                  Pragmatic Software Engineer â€” crafting scalable solutions for businesses that deserve to feel extraordinary.
+                </p>
+                <div className="flex gap-3">
+                  <a href="https://github.com/EGABO-TECH" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"><GithubIcon className="w-4 h-4" /></a>
+                  <a href="https://linkedin.com/in/egaboaaron" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"><LinkedinIcon className="w-4 h-4" /></a>
+                  <a href="https://x.com/WanEgabo" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:border-purple-500/50 hover:bg-purple-500/10 transition-all"><TwitterIcon className="w-4 h-4" /></a>
+                </div>
+              </div>
+
+              <div className="col-span-1 md:col-span-2 lg:col-span-2">
+                <h4 className="text-[10px] tracking-[0.2em] uppercase text-white/40 mb-8 font-medium">Navigate</h4>
+                <ul className="flex flex-col gap-5 text-sm text-white/70 font-light">
+                  <li><a href="#home" className="hover:text-purple-400 transition-colors">Home</a></li>
+                  <li><a href="#projects" className="hover:text-purple-400 transition-colors">Projects</a></li>
+                  <li><a href="#skills" className="hover:text-purple-400 transition-colors">Technical Arsenal</a></li>
+                  <li><a href="#github" className="hover:text-purple-400 transition-colors">Open Source</a></li>
+                </ul>
+              </div>
+
+              <div className="col-span-1 md:col-span-3 lg:col-span-2">
+                <h4 className="text-[10px] tracking-[0.2em] uppercase text-white/40 mb-8 font-medium">Services</h4>
+                <ul className="flex flex-col gap-5 text-sm text-white/70 font-light">
+                  <li>Full-Stack Web Dev</li>
+                  <li>Systems Architecture</li>
+                  <li>Agentic AI Integration</li>
+                  <li>Technical Consultation</li>
+                  <li>MVP Prototyping</li>
+                </ul>
+              </div>
+
+              <div className="col-span-1 md:col-span-3 lg:col-span-4 flex flex-col">
+                <h4 className="text-[10px] tracking-[0.2em] uppercase text-white/40 mb-8 font-medium">Visit Me</h4>
+
+                <div className="flex flex-col gap-6 text-sm text-white/70 font-light mb-8">
+                  <div className="flex items-start gap-3">
+                    <svg className="w-4 h-4 text-white/30 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <span>Cavendish University Uganda<br />Kampala, Uganda<br />Opposite the American Embassy<br />Remote, Freelance and Global</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <svg className="w-4 h-4 text-white/30 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <a href="mailto:aaronegabo@gmail.com" className="hover:text-purple-400 transition-colors">aaronegabo@gmail.com</a>
+                  </div>
+                </div>
+
+                <div className="w-full h-40 rounded-xl overflow-hidden border border-white/10 opacity-80 hover:opacity-100 transition-all duration-500 relative group shadow-lg">
+                  <iframe
+                    src="https://maps.google.com/maps?q=Cavendish%20University%20Uganda&t=m&z=15&output=embed&iwloc=near"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Cavendish University Uganda Map"
+                    className="absolute inset-0"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+
+            <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30 font-light">
+              <div>Â© {new Date().getFullYear()} Egabo Aaron. All rights reserved.</div>
+              <div className="flex gap-8">
+                <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
