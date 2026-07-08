@@ -141,7 +141,7 @@ const CUSTOM_ICON_NAMES = new Set([
   'MS Office', 'MS Access', 'Powerpoint'
 ]);
 
-const ICON_CLASS = 'w-8 h-8 sm:w-10 sm:h-10 opacity-80 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]';
+const ICON_CLASS = 'w-8 h-8 sm:w-10 sm:h-10 opacity-80 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]';
 
 const SkillCard = ({ skill, index, rowIndex }: { skill: { name: string; icon: string }, index: number, rowIndex: number }) => {
   const hasCustom = CUSTOM_ICON_NAMES.has(skill.name);
@@ -151,7 +151,7 @@ const SkillCard = ({ skill, index, rowIndex }: { skill: { name: string; icon: st
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: rowIndex * 0.1 + index * 0.05 }}
-      className="liquid-glass group rounded-2xl p-4 w-20 h-24 sm:w-24 sm:h-28 flex flex-col items-center justify-center gap-3 hover:bg-white/10 transition-all duration-300 hover:scale-110 hover:-translate-y-2 cursor-pointer border border-white/5 hover:border-white/20 shadow-lg"
+      className="liquid-glass group rounded-2xl p-4 w-20 h-24 sm:w-24 sm:h-28 flex flex-col items-center justify-center gap-3 hover:bg-emerald-500/10 transition-all duration-300 hover:scale-110 hover:-translate-y-2 cursor-pointer border border-white/5 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] shadow-lg"
     >
       {hasCustom ? (
         <CustomIcon name={skill.name} className={ICON_CLASS} />
@@ -175,14 +175,14 @@ const SkillCard = ({ skill, index, rowIndex }: { skill: { name: string; icon: st
 const SkillsGrid = () => {
   return (
     <section id="skills" className="relative z-10 py-32 px-4 md:px-8 overflow-hidden min-h-screen flex items-center justify-center">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/30 via-[#0a0014] to-black -z-20"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/30 via-[#020818] to-[#020818] -z-20"></div>
       
       <div 
         className="absolute inset-0 -z-10 opacity-30 pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(147, 51, 234, 0.2) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(147, 51, 234, 0.2) 1px, transparent 1px)
+            linear-gradient(rgba(16, 185, 129, 0.2) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(16, 185, 129, 0.2) 1px, transparent 1px)
           `,
           backgroundSize: '50px 50px',
           transform: 'perspective(1000px) rotateX(60deg) translateY(-100px) scale(2.5)',
@@ -190,8 +190,8 @@ const SkillsGrid = () => {
         }}
       />
       
-      <div className="absolute right-[10%] top-1/2 w-32 h-32 bg-purple-400/20 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
-      <div className="absolute right-[15%] top-[55%] w-16 h-16 bg-white/10 rounded-full blur-[20px] shadow-[0_0_50px_rgba(216,180,254,0.6)] -z-10 pointer-events-none"></div>
+      <div className="absolute right-[10%] top-1/2 w-32 h-32 bg-amber-500/20 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
+      <div className="absolute right-[15%] top-[55%] w-16 h-16 bg-white/10 rounded-full blur-[20px] shadow-[0_0_50px_rgba(245,158,11,0.6)] -z-10 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto w-full flex flex-col items-center">
         <h2 className="text-4xl md:text-5xl font-heading italic leading-tight tracking-[-1px] mb-16 text-center">
