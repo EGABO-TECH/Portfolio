@@ -6,7 +6,7 @@ const skillsRow1 = [
   { name: 'TS', icon: 'typescript' },
   { name: 'C', icon: 'c' },
   { name: 'HTML', icon: 'html5' },
-  { name: 'CSS', icon: 'css' },
+  { name: 'CSS', icon: 'css3' },
   { name: 'Bash', icon: 'gnubash' },
   { name: 'React', icon: 'react' },
   { name: 'Next.js', icon: 'nextdotjs' }
@@ -51,6 +51,26 @@ const allRows = [skillsRow1, skillsRow2, skillsRow3, skillsRow4, skillsRow5];
 
 const CustomIcon = ({ name, className }: { name: string, className?: string }) => {
   switch (name) {
+    case 'Antigravity':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" className={className}>
+          <path 
+            d="M 3 20 C 8 20, 9 4, 12 4 C 15 4, 16 20, 21 20" 
+            stroke="url(#agGradLogo)" 
+            strokeWidth="4" 
+            strokeLinecap="round" 
+            fill="none" 
+          />
+          <defs>
+            <linearGradient id="agGradLogo" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#0ea5e9" />
+              <stop offset="35%" stopColor="#22c55e" />
+              <stop offset="60%" stopColor="#f97316" />
+              <stop offset="100%" stopColor="#3b82f6" />
+            </linearGradient>
+          </defs>
+        </svg>
+      );
     case 'CSS':
       return <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" className={className} alt="CSS" />;
     case 'VS Code':
@@ -63,18 +83,14 @@ const CustomIcon = ({ name, className }: { name: string, className?: string }) =
           <path d="M12 16H18" stroke="#ffffff" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       );
-    case 'Antigravity':
+    case 'Claude Code':
       return (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className={className} strokeWidth="1.5">
-          <path d="M12 2L3 7v10l9 5 9-5V7L12 2z" stroke="url(#agGrad)" fill="url(#agFill)"/>
-          <circle cx="12" cy="12" r="3" stroke="#fff" fill="#fff"/>
-          <path d="M12 2v6" stroke="#fff" strokeDasharray="1 2"/>
-          <defs>
-            <linearGradient id="agGrad" x1="3" y1="2" x2="21" y2="22"><stop stopColor="#8b5cf6"/><stop offset="1" stopColor="#3b82f6"/></linearGradient>
-            <linearGradient id="agFill" x1="3" y1="2" x2="21" y2="22"><stop stopColor="#8b5cf6" stopOpacity="0.2"/><stop offset="1" stopColor="#3b82f6" stopOpacity="0.2"/></linearGradient>
-          </defs>
-        </svg>
+        <div className={`${className} bg-[#D27357] rounded-xl flex items-center justify-center p-1.5`}>
+          <img src="https://cdn.simpleicons.org/anthropic/white" alt="Claude Code" className="w-full h-full object-contain" />
+        </div>
       );
+    case 'Google Stitch':
+      return <img src="https://cdn.worldvectorlogo.com/logos/google-cloud-2.svg" className={className} alt="Google Stitch" onError={(e) => (e.currentTarget.src = "https://cdn.simpleicons.org/googlecloud")} />;
     case 'Z.AI':
       return (
         <svg viewBox="0 0 24 24" fill="none" className={className} strokeWidth="2">
@@ -121,8 +137,8 @@ const CustomIcon = ({ name, className }: { name: string, className?: string }) =
 
 // Names that have a hand-crafted custom icon defined in CustomIcon
 const CUSTOM_ICON_NAMES = new Set([
-  'CSS', 'VS Code', 'CMD', 'Antigravity', 'Z.AI', 'Speechma',
-  'MS Office', 'MS Access', 'Powerpoint',
+  'Antigravity', 'CSS', 'VS Code', 'CMD', 'Claude Code', 'Google Stitch', 'Z.AI', 'Speechma',
+  'MS Office', 'MS Access', 'Powerpoint'
 ]);
 
 const ICON_CLASS = 'w-8 h-8 sm:w-10 sm:h-10 opacity-80 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]';
@@ -141,7 +157,7 @@ const SkillCard = ({ skill, index, rowIndex }: { skill: { name: string; icon: st
         <CustomIcon name={skill.name} className={ICON_CLASS} />
       ) : (
         <img
-          src={`https://cdn.simpleicons.org/${skill.icon}/white`}
+          src={`https://cdn.simpleicons.org/${skill.icon}`}
           alt={skill.name}
           className={ICON_CLASS}
           onError={(e) => {
