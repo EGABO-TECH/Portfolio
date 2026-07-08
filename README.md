@@ -4,6 +4,8 @@
 
 # Egabo Aaron — Portfolio
 
+[![Email](https://img.shields.io/badge/-aaronegabo@gmail.com-c0392b?style=flat&logo=gmail&logoColor=white)](mailto:aaronegabo@gmail.com) [![GitHub](https://img.shields.io/badge/-EGABO--TECH-181717?style=flat&logo=github&logoColor=white)](https://github.com/EGABO-TECH) [![LinkedIn](https://img.shields.io/badge/-egaboaaron-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/egaboaaron) [![X](https://img.shields.io/badge/-@WanEgabo-1DA1F2?style=flat&logo=x&logoColor=white)](https://x.com/WanEgabo)
+
 A cinematic, high-contrast portfolio built to feel less like a résumé and more like a curated statement of craft. This project showcases my work as a software engineer who builds thoughtful digital products for real-world problems — from education and health tech to civic infrastructure and emerging markets.
 
 ## What this site is
@@ -76,9 +78,9 @@ npm run lint
 
 If you want to talk about software, product thinking, systems design, or collaboration, I’d love to hear from you.
 
-- Email: aaronegabo@gmail.com
-- GitHub: EGABO-TECH
-- LinkedIn: egaboaaron
-- X: @WanEgabo
+-  Email: [aaronegabo@gmail.com](mailto:aaronegabo@gmail.com)
+-  GitHub: [EGABO-TECH](https://github.com/EGABO-TECH)
+-  LinkedIn: [egaboaaron](https://www.linkedin.com/in/egaboaaron)
+-  X: [@WanEgabo](https://x.com/WanEgabo)
 
 © 2026 Egabo Aaron. All rights reserved unless otherwise stated.
