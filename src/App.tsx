@@ -15,9 +15,9 @@ import accommodateMeImage from './assets/accommodate-me-real.png';
 // Abstract Background
 const AbstractBackground = () => (
   <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-[#020818] to-[#020818]"></div>
-    <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-emerald-600/8 blur-[120px] rounded-full"></div>
-    <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-amber-500/8 blur-[120px] rounded-full"></div>
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-teal-500/12 via-[#0d1624] to-[#050814]"></div>
+    <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-emerald-400/10 blur-[140px] rounded-full"></div>
+    <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-amber-300/10 blur-[140px] rounded-full"></div>
     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
     {/* Grid */}
     <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
@@ -39,20 +39,23 @@ const BeehiivNewsletter = () => {
   }, []);
 
   return (
-    <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-[#07131b] via-[#080d16] to-[#060b11] p-8 md:p-10 shadow-[0_25px_80px_rgba(0,0,0,0.35)] mb-12">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.18),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.16),transparent_45%)]" />
-      <div className="relative z-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+    <div className="relative overflow-hidden rounded-[2.5rem] border border-slate-700/30 bg-slate-950/98 p-5 sm:p-6 md:p-8 shadow-[0_30px_110px_rgba(0,0,0,0.28)] mb-12">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(20,184,166,0.1),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(245,158,11,0.08),transparent_38%)] pointer-events-none" />
+      <div className="relative z-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,520px)] items-start">
         <div className="max-w-2xl">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-emerald-400/80 font-semibold mb-3">Official Newsletter</p>
-          <h3 className="text-3xl md:text-4xl font-heading italic leading-tight mb-3 text-white">
+          <p className="text-[10px] tracking-[0.3em] uppercase text-emerald-300/80 font-semibold mb-3">Official Newsletter</p>
+          <h3 className="text-3xl md:text-[3.25rem] leading-[1.02] mb-4 text-slate-50 max-w-3xl">
             Join 500+ subscribers receiving the sharpest notes from my work.
           </h3>
-          <p className="text-sm md:text-base text-white/65 leading-relaxed">
+          <p className="text-sm md:text-base text-slate-300/90 leading-8 max-w-xl">
             Be part of a thoughtful circle of readers who get software insights, product thinking, and the next builds I’m shipping.
           </p>
         </div>
-        <div className="w-full lg:max-w-[430px]">
-          <div ref={containerRef} className="min-h-[180px]" />
+
+        <div className="w-full">
+          <div className="overflow-hidden rounded-[1.75rem] border border-slate-700/40 bg-slate-900/95 shadow-[0_16px_48px_rgba(0,0,0,0.22)]">
+            <div ref={containerRef} className="newsletter-embed min-h-[320px] md:min-h-[380px] w-full" />
+          </div>
         </div>
       </div>
     </div>
@@ -72,8 +75,8 @@ const LegalPage = ({
   sections: Array<{ title: string; content: string | string[] }>;
   onBack: () => void;
 }) => (
-  <div className="min-h-screen bg-[#020818] text-white">
-    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-[#020818] to-[#020818]" />
+  <div className="min-h-screen bg-[#040816] text-white">
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-500/20 via-[#08132c] to-[#040816]" />
     <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
     <div className="relative z-10 mx-auto flex max-w-5xl flex-col px-6 py-20 md:px-10 lg:px-16">
       <button
@@ -201,6 +204,7 @@ const REPOS: Repo[] = [
     language: 'JavaScript',
     stars: 0,
     url: 'https://github.com/EGABO-TECH/ACCOMMODATE-ME',
+    deployment: 'https://accommodateme.vercel.app/',
     tags: ['Full-Stack', 'PostgreSQL', 'Civic Tech'],
     category: 'Personal',
   },
@@ -851,7 +855,7 @@ function App() {
                     <motion.span key={tech} variants={staggerItem} className="liquid-glass px-3 py-1 rounded-full text-xs">{tech}</motion.span>
                   ))}
                 </motion.div>
-                <motion.a variants={fadeIn} href="#" onClick={(e) => { e.preventDefault(); alert('Deployment link coming soon!'); }} className="inline-flex items-center gap-2 text-sm font-medium hover:text-purple-400 transition-colors">
+                <motion.a variants={fadeIn} href="https://accommodateme.vercel.app/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm font-medium hover:text-purple-400 transition-colors">
                   View Live Website <ArrowUpRight className="w-4 h-4" />
                 </motion.a>
               </motion.div>
@@ -1049,46 +1053,39 @@ function App() {
         );
 
         const ReviewCard = ({ r }: { r: typeof track1[0] }) => (
-          <div className="shrink-0 w-[380px] liquid-glass rounded-[1.5rem] p-7 border border-emerald-500/10 bg-gradient-to-br from-emerald-500/5 to-transparent flex flex-col gap-5">
-            <div className="flex gap-1">{[0, 1, 2, 3, 4].map(i => <StarIcon key={i} />)}</div>
-            <p className="text-sm text-white/75 font-light leading-relaxed flex-1">"{r.quote}"</p>
-            <div className="flex items-center gap-3 pt-2 border-t border-white/5">
-              <div className={`w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-amber-500 border border-emerald-400/20 flex items-center justify-center text-xs font-semibold text-white shrink-0`}>{r.avatar}</div>
+          <article className="min-w-0 rounded-[2rem] border border-white/10 bg-slate-950/85 backdrop-blur-xl p-7 shadow-[0_20px_70px_rgba(0,0,0,0.24)] transition duration-300 hover:-translate-y-1 hover:border-emerald-400/20 hover:shadow-[0_24px_82px_rgba(0,0,0,0.28)]">
+            <div className="flex items-start justify-between gap-4 mb-5">
+              <div className="flex gap-1">
+                {[0, 1, 2, 3, 4].map(i => <StarIcon key={i} />)}
+              </div>
+              <span className="text-[11px] uppercase tracking-[0.35em] text-slate-400">Client review</span>
+            </div>
+            <p className="text-sm leading-7 text-slate-200 font-light mb-8">“{r.quote}”</p>
+            <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+              <div className={`flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br ${r.color} ${r.border} text-sm font-semibold text-white`}>{r.avatar}</div>
               <div>
-                <div className="text-sm font-medium text-white">{r.name}</div>
-                <div className="text-[11px] text-white/40 font-light">{r.role}</div>
+                <div className="text-sm font-semibold text-white">{r.name}</div>
+                <div className="text-sm text-slate-400">{r.role}</div>
               </div>
             </div>
-          </div>
+          </article>
         );
 
         return (
           <section id="reviews" className="relative z-10 py-32 overflow-hidden border-t border-white/5">
-            <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 lg:px-24 mb-16">
-              <div className="text-sm font-body text-gradient-emerald-gold font-semibold mb-4">// CLIENT REVIEWS</div>
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading italic leading-tight tracking-[-2px]">What They Say</h2>
-                <p className="text-white/50 text-sm max-w-xs leading-relaxed font-light">Trusted by founders, engineers and institutions across Uganda and beyond.</p>
+            <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 lg:px-24 mb-14">
+              <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
+                <div className="max-w-2xl">
+                  <div className="text-sm font-body text-gradient-emerald-gold font-semibold mb-4">// CLIENT REVIEWS</div>
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading italic leading-tight tracking-[-1px] text-white">What they say</h2>
+                </div>
+                <p className="max-w-md text-sm leading-7 text-slate-400 font-light">Trusted by founders, technical leaders, and product teams throughout East Africa. Every review reflects an engineered solution delivered with care, clarity, and long-term value.</p>
               </div>
             </div>
 
-            {/* Track 1 â€” left scroll */}
-            <div className="relative flex gap-6 mb-6 overflow-hidden" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
-              <div className="flex gap-6 animate-[marquee_40s_linear_infinite] shrink-0">
-                {track1.map(r => <ReviewCard key={r.name} r={r} />)}
-              </div>
-              <div className="flex gap-6 animate-[marquee_40s_linear_infinite] shrink-0" aria-hidden>
-                {track1.map(r => <ReviewCard key={r.name + '-dup'} r={r} />)}
-              </div>
-            </div>
-
-            {/* Track 2 â€” right scroll */}
-            <div className="relative flex gap-6 overflow-hidden" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
-              <div className="flex gap-6 animate-[marquee-reverse_55s_linear_infinite] shrink-0">
-                {track2.map(r => <ReviewCard key={r.name} r={r} />)}
-              </div>
-              <div className="flex gap-6 animate-[marquee-reverse_55s_linear_infinite] shrink-0" aria-hidden>
-                {track2.map(r => <ReviewCard key={r.name + '-dup'} r={r} />)}
+            <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 lg:px-24">
+              <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                {[...track1, ...track2].map(r => <ReviewCard key={r.name} r={r} />)}
               </div>
             </div>
           </section>
@@ -1254,7 +1251,7 @@ function App() {
                   </div>
                 </div>
 
-                <div className="w-full h-40 rounded-xl overflow-hidden border border-white/10 opacity-80 hover:opacity-100 transition-all duration-500 relative group shadow-lg">
+                <div className="w-full rounded-xl overflow-hidden border border-white/10 opacity-80 hover:opacity-100 transition-all duration-500 relative group shadow-lg aspect-[4/3] md:aspect-[3/2] lg:aspect-[16/9]">
                   <iframe
                     src="https://maps.google.com/maps?q=Cavendish%20University%20Uganda&t=m&z=15&output=embed&iwloc=near"
                     width="100%"
