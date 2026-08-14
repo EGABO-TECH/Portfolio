@@ -143,14 +143,14 @@ const CUSTOM_ICON_NAMES = new Set([
 
 const ICON_CLASS = 'w-8 h-8 sm:w-10 sm:h-10 opacity-80 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]';
 
-const SkillCard = ({ skill, index, rowIndex }: { skill: { name: string; icon: string }, index: number, rowIndex: number }) => {
+const SkillCard = ({ skill }: { skill: { name: string; icon: string } }) => {
   const hasCustom = CUSTOM_ICON_NAMES.has(skill.name);
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 1, y: 0 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: rowIndex * 0.1 + index * 0.05 }}
+      transition={{ duration: 0 }}
       className="liquid-glass group rounded-2xl p-4 w-20 h-24 sm:w-24 sm:h-28 flex flex-col items-center justify-center gap-3 hover:bg-emerald-500/10 transition-all duration-300 hover:scale-110 hover:-translate-y-2 cursor-pointer border border-white/5 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] shadow-lg"
     >
       {hasCustom ? (
@@ -201,8 +201,8 @@ const SkillsGrid = () => {
         <div className="flex flex-col items-center gap-4 sm:gap-6 w-full">
           {allRows.map((row, rowIndex) => (
             <div key={rowIndex} className="flex flex-wrap justify-center gap-4 sm:gap-6 w-full">
-              {row.map((skill, index) => (
-                <SkillCard key={skill.name} skill={skill} index={index} rowIndex={rowIndex} />
+              {row.map((skill) => (
+                <SkillCard key={skill.name} skill={skill} />
               ))}
             </div>
           ))}

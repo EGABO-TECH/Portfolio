@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from 'react';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, PlayCircle, Loader2 } from 'lucide-react';
 import youtubeLogo from '../assets/yinyangshadow-logo.svg';
 
@@ -23,8 +23,6 @@ const SocialFeeds = () => {
   const [activeTab] = useState<Platform>('YouTube');
   const [videos, setVideos] = useState<YouTubeVideo[]>([]);
   const [loading, setLoading] = useState(true);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   const YOUTUBE_CHANNEL_ID = 'UC5j2vAyKquVFx6dlHXngDvg';
   const YOUTUBE_CHANNEL_LINK = 'https://www.youtube.com/@YinAndYangShadow';
@@ -57,12 +55,12 @@ const SocialFeeds = () => {
 
   return (
     <section id="content" className="relative z-10 py-32 px-8 md:px-16 lg:px-24 border-t border-white/5">
-      <div className="max-w-7xl mx-auto" ref={ref}>
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0 }}
           className="mb-12"
         >
           <div className="text-sm font-body text-gradient-emerald-gold font-semibold mb-4">// CONTENT CREATION AND EVENTS</div>
@@ -75,10 +73,10 @@ const SocialFeeds = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
+            exit={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0 }}
             className="min-h-[400px]"
           >
             

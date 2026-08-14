@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, GitFork, Star, Globe, BookOpen, User, Flame, Rocket } from 'lucide-react';
 import { fadeUp, fadeIn, slideInLeft, slideInRight, scaleIn, staggerContainer, staggerItem, liftUp, viewport } from './lib/motionVariants';
 
@@ -405,8 +405,6 @@ const LANG_COLORS: Record<string, string> = {
 // â”€â”€â”€ GitHub Section Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const GitHubSection = () => {
   const [activeTab, setActiveTab] = useState<RepoCategory>('Popular');
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   const filtered = REPOS.filter(r => r.category === activeTab);
   const counts = (Object.keys(CATEGORY_CONFIG) as RepoCategory[]).reduce((acc, cat) => {
@@ -416,12 +414,12 @@ const GitHubSection = () => {
 
   return (
     <section id="github" className="relative z-10 py-32 px-4 sm:px-8 md:px-16 lg:px-24">
-      <div className="max-w-7xl mx-auto" ref={ref}>
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0 }}
         >
           <div className="text-sm font-body text-gradient-emerald-gold font-semibold mb-4">// GITHUB REPOSITORIES</div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
@@ -444,9 +442,9 @@ const GitHubSection = () => {
 
         {/* Filter Tabs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.15 }}
+          initial={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0 }}
           className="flex flex-wrap gap-2 mb-10"
         >
           {(Object.keys(CATEGORY_CONFIG) as RepoCategory[]).map(cat => {
@@ -475,20 +473,20 @@ const GitHubSection = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
+            exit={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {filtered.map((repo, i) => {
+            {filtered.map((repo) => {
               const cfg = CATEGORY_CONFIG[repo.category];
               return (
                 <motion.div
                   key={repo.name}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 1, y: 0 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  transition={{ duration: 0 }}
                   className="liquid-glass rounded-[1.5rem] p-6 flex flex-col group hover:bg-white/[0.03] transition-all duration-300 relative overflow-hidden"
                 >
                   {/* Subtle glow on hover */}
@@ -568,9 +566,9 @@ const GitHubSection = () => {
 
         {/* Bottom CTA */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0 }}
           className="flex justify-center mt-16"
         >
           <a
