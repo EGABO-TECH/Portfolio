@@ -7,7 +7,7 @@ import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
  * Create the form at https://formspree.io with aaronegabo@gmail.com as the
  * target email, then paste the ID here (or set VITE_FORMSPREE_FORM_ID).
  */
-const FORMSPREE_FORM_ID: string = import.meta.env.VITE_FORMSPREE_FORM_ID ?? '';
+const FORMSPREE_FORM_ID: string = import.meta.env.VITE_FORMSPREE_FORM_ID ?? 'xzeenegb';
 
 const CONTACT_EMAIL = 'aaronegabo@gmail.com';
 
