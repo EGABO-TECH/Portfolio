@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FluidBackground from './FluidBackground';
+import ResumeModal from './ResumeModal';
 import './HeroSection.css';
 
 // ─── Shared ease ───────────────────────────────────────────────────────────
@@ -45,7 +46,7 @@ const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Projects', href: '#projects' },
-  { label: 'GitHub', href: '#github' },
+  { label: 'Certificates', href: '#certificates' },
   { label: 'Skills', href: '#skills' },
   { label: 'Content', href: '#content' },
   { label: 'Contact', href: '#contact' },
@@ -55,6 +56,8 @@ const NAV_LINKS = [
 const HeroSection = () => {
   const [greetingVisible, setGreetingVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const closeResume = useCallback(() => setIsResumeOpen(false), []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -306,9 +309,9 @@ const HeroSection = () => {
             <a href="#projects" className="hero-btn-primary">
               Explore Projects
             </a>
-            <a href="/Egabo_Aaron_Resume.pdf" target="_blank" rel="noreferrer" className="hero-btn-secondary">
-              View Resume
-            </a>
+            <button type="button" onClick={() => setIsResumeOpen(true)} className="hero-btn-secondary">
+              View / Download Resume
+            </button>
           </motion.div>
         </div>
 
@@ -327,6 +330,8 @@ const HeroSection = () => {
           ))}
         </div>
       </motion.div>
+
+      <ResumeModal open={isResumeOpen} onClose={closeResume} />
     </section>
   );
 };
