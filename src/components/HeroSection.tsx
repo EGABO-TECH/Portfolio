@@ -65,6 +65,37 @@ const HeroSection = () => {
     return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
 
+  // ── Scroll spy: which section is the reader in? ──────────────────────
+  const [activeHref, setActiveHref] = useState('#home');
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const doc = document.documentElement;
+      // At the very bottom, the last section wins even if it's short
+      if (window.innerHeight + window.scrollY >= doc.scrollHeight - 4) {
+        setActiveHref(NAV_LINKS[NAV_LINKS.length - 1].href);
+        return;
+      }
+      const line = window.innerHeight * 0.35;
+      let current = NAV_LINKS[0].href;
+      for (const { href } of NAV_LINKS) {
+        const el = document.getElementById(href.slice(1));
+        if (el && el.getBoundingClientRect().top <= line) current = href;
+      }
+      setActiveHref(current);
+    };
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
+
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(prev => !prev);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -173,10 +204,27 @@ const HeroSection = () => {
         {/* CENTER — nav links pill (desktop only) */}
         <div className="hero-nav-center">
           <nav className="hero-links-pill" aria-label="Sections">
-            {NAV_LINKS.filter(l => l.label !== 'Contact').map(({ label, href }) => (
-              <a key={href} href={href} className="hero-nav-link">{label}</a>
-            ))}
-            <a href="#contact" className="hero-nav-link hero-nav-cta">Contact</a>
+            {NAV_LINKS.map(({ label, href }) => {
+              const isActive = href === activeHref;
+              return (
+                <a
+                  key={href}
+                  href={href}
+                  onClick={() => setActiveHref(href)}
+                  className={`hero-nav-link ${isActive ? 'is-active' : ''}`}
+                  aria-current={isActive ? 'location' : undefined}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="hero-nav-highlight"
+                      className="hero-nav-highlight"
+                      transition={{ type: 'spring', stiffness: 420, damping: 36 }}
+                    />
+                  )}
+                  <span className="hero-nav-link-text">{label}</span>
+                </a>
+              );
+            })}
           </nav>
         </div>
 
@@ -239,7 +287,8 @@ const HeroSection = () => {
                   <motion.a
                     key={href}
                     href={href}
-                    className={`hero-mobile-link ${label === 'Contact' ? 'hero-mobile-cta' : ''}`}
+                    className={`hero-mobile-link ${href === activeHref ? 'hero-mobile-cta' : ''}`}
+                    aria-current={href === activeHref ? 'location' : undefined}
                     onClick={closeMobileMenu}
                     initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
